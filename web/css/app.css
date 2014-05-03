@@ -1,0 +1,240 @@
+/*
+ * WDean Medical is distributed under the
+ * GNU Lesser General Public License (GNU LGPL).
+ * For details see: http://www.wdeanmedical.com
+ * copyright 2013-2014 WDean Medical
+ */
+ 
+ /* GLOBAL STYLES
+-------------------------------------------------- */
+body {
+  font-family: Segoe UI, Open Sans, Verdana, Arial, Helvetica, sans-serif;
+  margin-top: 55px;
+  margin-bottom: 70px;
+  background-color: #f8f8f8;
+  background-size: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat:no-repeat;
+  vertical-align: top;
+}
+
+body.signin {
+  background-image: url(../images/01.jpg);
+  margin-top: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Segoe UI Light, Open Sans Light ,Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+.navbar {
+  min-height: 40px;
+}
+.navbar-brand {
+  height: 10px;
+  padding: 15px 25px 15px 10px;
+  line-height: 10px;
+}
+.navbar-nav {
+  margin: 7.5px -15px;
+}
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 10px;
+}
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.navbar-text {
+  margin: 8px 5px 0px 10px;
+}
+.navbar-toggle {
+  padding: 5px 8px;
+}
+#wdm-notification {
+  color: white;
+  font-size: 1em;
+  margin-top: 5px;
+}
+
+/* CUSTOMIZE THE MAIN NAVIGATON
+-------------------------------------------------- */
+.btn-nav {
+  margin-bottom: 15px;
+  padding: 7px 0px 0px 0px;
+  font-size: .75em;
+}
+.btn-nav2 {
+   margin-bottom: 7.5px;
+   padding-left: 15px;
+   padding-right: 15px;
+   text-align: left;
+}
+
+/* CUSTOMIZE THE PAGE CONTENTS
+-------------------------------------------------- */
+.user-label {
+  font-size: 10px;
+}
+.divider {
+  margin: 0px -8px 15px -8px;
+  border-color: #999999;
+}
+.divider2 {
+  margin: 0px 0px 15px 0px;
+  border-color: #999999;
+}
+.divider3 {
+  margin: 0px 0px 5px 0px;
+  border-color: #999999;
+}
+.sections {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.welcome-xs {
+  color: #fff;
+}
+.welcome-xs-icon {
+  margin-top: 10px;
+}
+.img-pad {
+  padding-bottom: 5px;
+}
+.btn-submit {
+  margin-bottom: 10px;
+}
+.background-op {
+  background-color: rgba(255,255,255,0.6);
+}
+.background-op2 {
+  margin-top: 10px;
+  background-color: rgba(255,255,255);
+}
+.panel-pad {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.facts-sm {
+  font-size: .70em;
+}
+.facts-md {
+  font-size: .75em;
+}
+.checkbox {
+  font-weight: normal;
+}
+.calendar {
+  border-width: 0;
+  width: 100%; 
+  height: 300px; 
+  frameborder: 0px;
+  scrolling: no;
+}
+
+/* CUSTOMIZE THE FOOTER
+-------------------------------------------------- */
+footer {
+  padding: 2% 0% 5% 0%;
+}
+footer h6 {
+  font-size: 1em;
+}
+footer ul {
+  font-size: .75em;
+  color: #000;
+  margin-left: 0;
+  padding-left: 2em;
+  text-indent: -.15em;
+}
+footer li a {
+  color: #000;
+}
+.sitemap {
+  padding-left: 2%;
+}
+.sitemap-sm {
+  padding-left: 7.5%;
+}
+.sitemap-xs {
+  padding-left: 10%;
+}
+.softdemo-xs {
+  padding-left: 10%;
+}
+
+.nav-txt a {
+  color: #999999;
+}
+.initially-no-display {
+  display: none;
+}
+
+
+.table-row-highlight {
+    background-color: #9DB8D9;
+}
+
+td.simple-data-table-footer p {
+    margin: 0px;
+}
+
+#health-trends-chart-canvas {
+  margin-top:50px;
+  margin-bottom:100px;
+  width: 100% !important;
+  max-width: 1200px;
+  height: auto !important;
+}
+
+th.highlighted { background:#FFFF66 }
+td.highlighted { background:#FFFF66 }
+
+.form-element-error {
+  color: #bb0000;
+  margin:0 0 0 0;
+  display:inline;
+  clear: both;
+  max-width: 250px;
+  padding-bottom:0px;
+}
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+.headshot-sm  {
+  width:100px;
+  margin-right: 10px;
+}
+
+.headshot-med  {
+  width:140px;
+  margin-right: 10px;
+}
+
+.headshot-lg  {
+  width:180px;
+  margin-right: 10px;
+}
+
+

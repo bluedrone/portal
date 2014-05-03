@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, user-scalable = no" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+    body {
+      font-family: Segoe UI, Open Sans, Verdana, Arial, Helvetica, sans-serif;
+      margin-top: 40px;
+      margin-bottom: 70px;
+      background-color: #f8f8f8;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Segoe UI Light, Open Sans Light ,Verdana, Arial, Helvetica, sans-serif;
+      font-weight: 300;
+      margin-top: 5px;
+    }
+    .navbar-nav {
+      padding-right: 20px;
+    }
+    .navbar-title {
+      padding-left: 10px;
+    }
+    .btn-nav {
+      margin-bottom: 15px;
+      padding: 7px 0px 0px 0px;
+      font-size: .75em;
+    }
+    .user-label {
+      font-size: 10px;
+    }
+    .divider {
+      margin: 0px -8px 15px -8px;
+      border-color: #999999;
+    }
+    .divider2 {
+       margin: 0px 0px 15px 0px;
+       border-color: #999999;
+    }
+    .nav-txt a {
+      color: #999999;
+    }
+    </style>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" target="_blank" href="http://www.wdeanmedical.com"><img class="img-responsive nav-center-top" alt="Responsive image" src="images/WDM-Header3.png"></a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="navbar-text hidden-sm navbar-title">Family Portal - a portal to your doctor, for you & your family.</li> 
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a target="_blank" href="http://www.pleasantvillemedical.com"><i class="fa fa-plus"></i> Pleasentville Medical</a></li>
+          <li><a href="index.html"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </nav>
+    
+    <div class="container">
+      <div class="row user-label">     
+        <div class="col-xs-6 visible-xs">
+          <h5>Patient Name</h5>
+        </div>
+        <div class="col-xs-6 hidden-xs">
+          <h3>Patient Name</h3>
+        </div>
+        <div class="col-xs-6 text-right visible-xs">
+          <p>Tuesday, January 14, 2014</p>
+        </div>
+        <div class="col-xs-6 text-right hidden-xs">
+          <h5>Tuesday, January 14, 2014</h5>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="row">
+        <div class="col-xs-4">
+          <a href="your_records.html" class="btn btn-success btn-sm btn-block btn-nav text-center"><p><i class="fa fa-folder-open fa-3x fa-space"></i></p><p>Your Records</p></a>
+        </div>
+        <div class="col-xs-4">
+          <a href="family_records.html" class="btn btn-warning btn-sm btn-block btn-nav text-center"><p><i class="fa fa-group fa-3x fa-space"></i></p><p>Family Records</p></a>
+        </div>
+        <div class="col-xs-4">
+          <a href="messages.html" class="btn btn-success btn-sm btn-block btn-nav text-center"><p><i class="fa fa-inbox fa-3x fa-space"></i></p><p>Messages</p></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <a href="appointments.html" class="btn btn-success btn-sm btn-block btn-nav text-center"><p><i class="fa fa-calendar fa-3x fa-space"></i></p><p>Appointments</p></a>
+        </div>
+        <div class="col-xs-4">
+          <a href="dashboard.html" class="btn btn-danger btn-sm btn-block btn-nav text-center"><p><i class="fa fa-arrow-circle-left fa-3x fa-space"></i></p><p>Back</p></a>
+        </div>
+        <div class="col-xs-4">
+          <a href="settings.html" class="btn btn-success btn-sm btn-block btn-nav text-center"><p><i class="fa fa-cogs fa-3x fa-space"></i></p><p>Settings</p></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h3 class="visible-xs"><i class="fa fa-user-md fa-lg"></i> Send Message</h3>
+          <h2 class="text-right hidden-xs"><i class="fa fa-user-md fa-lg"></i> Send Message</h2>
+          <hr class="divider2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p><h4>Send Your Doctor A Message</h4></p>
+              <p>We will attempt to respond to your message within one business day, but delays may occur. The Family Portal should only be used for routine and non-urgent matters. Please do not send messages through the Family Portal that require urgent attention.</p><p>Messages will be screened by your physician's staff to determine an appropriate person to respond to your request; please consider this when communicating sensitive information within your message.</p><p><strong>Please note:</strong> the communication you send or receive may become a part of your medical record.</p><p>Send a non-urgent message to your clinic.</p><p>Expect a response within 2 business days.</p>
+              <h4><strong>From:</strong> Nick Jason Sophinos [ABC123]</h4><br>
+              <form class="form" role="form">
+                <div class="form-group">
+                  <label for="inputoffice">To The Office Of:</label>
+                  <select class="form-control input-lg">
+                    <option>Choose</option>
+                    <option>Nick Sophinos</option>
+                    <option>Mary Kate Moore</option>
+                    <option>Jake Howard</option>
+                    <option>To B. Determined</option>
+                    <option>other: please specify in box below</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputsubject">Subject:</label>
+                  <select class="form-control input-lg">
+                    <option>Choose</option>
+                    <option>Medical Advice</option>
+                    <option>Lab Results</option>
+                    <option>Referal</option>
+                    <option>Consult</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputsubject">Message:</label>
+                  <textarea class="form-control" rows="6"></textarea>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success btn-lg pull-right">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse hidden-xs" role="navigation">
+      <p class="navbar-text nav-txt">
+        <a target="_blank" href="https://www.facebook.com/WDeanMedical"><i class=" fa fa-facebook-square fa-2x"></i></a> 
+        <a target="_blank" href="https://twitter.com/WDeanMedical"><i class=" fa fa-twitter-square fa-2x"></i></a> 
+        <a target="_blank" href="http://www.linkedin.com/company/wdean-medical"><i class=" fa fa-linkedin-square fa-2x"></i></a>
+        <a target="_blank" href="http://www.wdeanmedical.com">www.wdeanmedical.com</a>
+      </p>
+    </nav>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

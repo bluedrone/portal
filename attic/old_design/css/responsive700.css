@@ -1,0 +1,185 @@
+@media screen and (max-width: 1000px) {
+	body{
+		font-size: .9em;
+	}
+	
+#home_link p {
+  font-size: 3.2em;
+  margin: 0;
+  position: absolute;
+  bottom: -5px;
+}
+	#app_title {
+  position: absolute;
+  left: 106px;
+  font-size: 3em;
+}
+
+	#main_screen, #med_records_screen, #message_center_screen {
+		width: 700px;
+		height: auto;
+	}
+	#r1c1, #tile1, #demo_live_screen_link_back, #r1c2, #r1c3, #r1c4, #r2c3, #r2c4, #r2c5, #r6c3, #r6c4, #r6c5, #r7c3 {
+		width: 133px;
+		height: 48px;
+	}
+	#home_link, #r1c4, #r2c1, #r6c1, #r7c4 {
+		width: 272px;
+		height: 48px;
+	}
+	#r3c1, #med_records_link_disabled, #med_records_link_back, #med_records_link, #r3c5, #faq_link, #r4c1, #message_center_link_disabled, #message_center_link, 
+	#r4c5, #reg_link, #r5c1, #appt_link_disabled, #appt_link, #appt_link_back, #r5c2, #family_link_disabled, #family_link,#r5c3, #r5c3, 
+	#admin_link, #admin_link_disabled, #r5c4, #message_link_disabled,#message_link, #r5c5, #loginForm, .central_link, #message_center_link_back, #detail_screen_back {
+		width: 133px;
+		height: 103px;
+	}
+	#r1c1, #tile1, #demo_live_screen_link_back, #r1c2, #r1c3, #r1c4 {
+		top: 54px;
+	}
+	#r2c1, #r2c3, #r2c4, #r2c5 {
+		top: 108px;
+	}
+	#r3c1, #r3c5, #center_screen {
+		top: 162px;
+	}
+	#home_screen div ul {
+		font-size: 1.5em !important;
+		margin-top: -10px;
+	}
+	#home_screen p {
+		font-size: 2.5em !important;
+		margin-top: 0px;
+		left: 15px !important;
+	}
+	#home_screen div + p {
+		top: 170px !important;
+	}
+	#home_screen img {
+		left: 285px !important;
+		top: 55px !important;
+		width: 99px;
+	}
+	#home_screen div {
+		left: 0 !important;
+	}
+	#center_screen {
+		left: 139px;
+	}
+	#r4c1, #r4c5, #mr7, #mr8, #mr9 {
+		top: 271px;
+	}
+	#loginForm {
+		padding: 8px 0px 5px 10px;
+	}
+	#loginForm label {
+	  margin: 0px 0px 0px 5px;	  
+	}
+	#login_submit {
+		margin: 3px !important;
+	}
+	#logout_submit {
+		margin-left: 0 !important;
+	}
+	#login_username, #login_password, #loginRunning {
+	  padding: 0px;
+	  margin: 0px;
+	}
+	#welcome_message {
+		left: 417px;
+		width: 300px;
+		margin-top: 55px;
+	}
+	#r5c1, #r5c2, #r5c3, #r5c3, #r5c4, #r5c5 {
+		top: 380px;
+	}
+	#r6c1, #r6c3, #r6c4, #r6c5 {
+		top: 489px;
+	}
+	#r7c3, #r7c4 {
+		top: 543px;
+	}
+	#r8c4 {
+		top: 597px;
+	}
+	#mr4, #mr5, #mr6, #ms4, #ms5, #ms6 {
+		top: 109px;
+	}
+	#mr7, #mr8, #mr9 {
+		top: 218px;
+	}
+	#r1c2, #r5c2, #mr2, #mr5, #mr8, #ms2, #ms5, #a2 {
+		left: 139px;
+	}
+	#r1c3, #r2c3, #r5c3, #r6c3, #r7c3, #mr3, #mr6, #mr9, #ms3, #ms6, #a3 {
+		left: 278px;
+	}
+	#r1c4, #r2c4, #r5c4, #r6c4, #r7c4 {
+		left: 417px;
+	}
+	#r8c4 {
+		left: 480px;
+	}
+	#r2c5, #r3c5, #r4c5, #r5c5, #r6c5, #r7c5 {
+		left: 556px;
+	}
+	#red_cross {
+		width: 45px;
+		left: 215px;
+		top: 2px;
+	}
+	#med_records_img1, #med_records_img2 {
+		width: 133px;
+	}
+	#med_records_img1 {
+		height: 212px;
+		top: 271px;
+	}
+	#med_records_img2 {
+		height: 375px;
+		left: 556px;
+		top: 108px;
+	}
+	#message_center_img1 {
+		width: 411px;
+		height: 103px;
+		top: 380px;
+		left: 139px;
+	}
+	#appt_img1 {
+		width: 411px;
+		height: 212px;
+		top: 271px;
+		left: 139px;
+	}
+	#detail_address {
+		left: 52%;
+	}
+	#detail_screen_home_link {
+		margin-bottom: 0;
+	}
+	#detail_screen_home_link img {
+		width: 40px;
+	}
+	#detail_screen_home_link p {
+		margin-top: 17px;
+	}
+	#ms5_content textarea, #ms3_content textarea, #ms4_content textarea, #a3_content textarea {
+		width: 400px !important;
+	}
+	#mr1_content table, #mr5_content table, #patient_medications_table div, #medical_history, #surgical_history, 
+	#ms1_content table, #ms2_content table, #a1_content table, #a2_content table {
+		width: 466px !important;
+	}
+  #r8c4 {
+    margin-left: -45px;
+  }	
+  .pref {
+    padding-left: 95px;
+    padding-bottom: 0px;
+  }
+  #mr7_chart_canvas {
+    width:500px;
+  }
+
+}
+

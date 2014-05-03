@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+
+<!--
+  WDean Medical is distributed under the
+  GNU Lesser General Public License (GNU LGPL).
+  For details see: http://www.wdeanmedical.com
+  copyright 2013-2014 WDean Medical
+--> 
+
+<html>
+  <head>
+    <title>WDean Medical Family & Patient Portal &nbsp;&nbsp;&nbsp;&nbsp;  Version 0.9.12 &nbsp;&nbsp;&nbsp;&nbsp; [30-APR-2014]</title>
+    <meta name="viewport" content="width=device-width, user-scalable = no" />
+    <link rel="shortcut icon" href="images/wdm.ico" />
+    <link rel="stylesheet" href="css/all.css" type="text/css">
+    <!--[if lt IE 9]> <script src="js/lib/html5shiv.js"></script> <script src="js/lib/respond.min.js"></script> <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+	    <div class="container-fluid">
+	      <!-- Brand and toggle get grouped for better mobile display -->
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	          <span class="sr-only">Toggle navigation</span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" target="_blank" href="http://www.wdeanmedical.com"><img class="img-responsive" alt="Responsive image" src="images/WDM-Header3.png"></a>
+	      </div>
+	      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	        <ul class="nav navbar-nav">
+	          <li class="navbar-text hidden-sm navbar-title">Family Portal - a portal to your doctor for you and your family.</li>
+	        </ul>
+	        <ul class="nav navbar-nav navbar-right">
+	          <li><p id='wdm-notification' class="navbar-text"><span id='wdm-notification-text'></span></p></li>
+	          <li><a target="_blank" href="http://www.pleasantvillemedical.com"><i class="fa fa-plus"></i> Pleasantville Medical</a></li>
+	          <li><a id="app-logout-submit" href="#" ><i class="fa fa-sign-out"></i> Sign Out</a></li>
+	        </ul>
+	      </div>
+	    </div>
+    </nav>
+    
+    <!-- TOP NAV PANEL -->
+    <div class="container initially-no-display" id="top-nav-panel">
+      <div class="row user-label">     
+        <div class="col-xs-6 visible-xs">
+          <h5 class="app-patient-full-name"></h5>
+        </div>
+        <div class="col-xs-6 hidden-xs">
+          <h3 class="app-patient-full-name"></h3>
+        </div>
+        <div class="col-xs-6 text-right visible-xs">
+          <p class="home-today"></p>
+        </div>
+        <div class="col-xs-6 text-right hidden-xs">
+          <h5 class="home-today"></h5>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="row">
+        <div class="col-xs-4">
+          <a id="app-your-records-panel-btn" class="btn btn-success btn-sm btn-block btn-nav text-center"><p><i class="fa fa-folder-open fa-3x fa-space"></i></p><p>Your Records</p></a>
+        </div>
+        <div class="col-xs-4">
+          <a id="app-family-records-panel-btn" class="btn btn-warning btn-sm btn-block btn-nav text-center"><p><i class="fa fa-group fa-3x fa-space"></i></p><p>Family Records</p></a>
+        </div>
+        <div class="col-xs-4">
+          <a id="app-messages-panel-btn" class="btn btn-success btn-sm btn-block btn-nav text-center"><p><i class="fa fa-inbox fa-3x fa-space"></i></p><p>Messages</p></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <a id="app-appointments-panel-btn" class="btn btn-success btn-sm btn-block btn-nav text-center"><p><i class="fa fa-calendar fa-3x fa-space"></i></p><p>Appointments</p></a>
+        </div>
+        <div class="col-xs-4">
+          <a id="app-send-message-panel-btn" class="btn btn-primary btn-sm btn-block btn-nav text-center"><p><i class="fa fa-user-md fa-3x fa-space"></i></p><p>Send Message</p></a>
+        </div>
+        <div class="col-xs-4">
+          <a id="app-settings-panel-btn" class="btn btn-success btn-sm btn-block btn-nav text-center"><p><i class="fa fa-cogs fa-3x fa-space"></i></p><p>Settings</p></a>
+        </div>
+      </div>
+    </div>
+    <!-- TOP NAV PANEL -->
+
+    <!-- SIGN IN SCREEN -->
+    <div id="signin-screen" class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <img class="img-responsive center-block img-circle visible-xs welcome-xs-icon" alt="Responsive image" src="images/WDM-PP.jpg">
+        </div>
+        <div class="col-sm-9">
+          <h2 class="text-center visible-xs welcome-xs">Welcome To Our Family Portal</h2><br>
+        </div>
+      </div>
+      <div class="panel panel-default background-op">
+        <div class="panel-body panel-pad">
+          <div class="row">
+            <div class="col-sm-5">
+              <div class="panel panel-default background-op2">
+                <div class="panel-body">
+                   <img class="img-responsive center-block img-circle hidden-xs" alt="Patient Portal Icon" src="images/WDM-PP.jpg">
+                   <h4 class="hidden-lg">Sign In Here</h4>
+                   <h2 class="hidden-xs hidden-sm hidden-md visible-lg">Sign In Here</h2>
+                   <form role="form">    
+                    <div class="form-group">
+                      <input type="text" id="app-signin-username" placeholder="Username" name="username" value="patient01@pleasantvillemedical.com" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" id="app-signin-password" placeholder="Password" name="password" value="Njs2101$" class="form-control">
+                    </div>
+                    <label class="checkbox">
+                      <input type="checkbox" value="remember-me">
+                      keep me signed in
+                    </label>
+                    <a id="app-signin-submit" class="btn btn-success btn-block singin-btn"><i class="fa fa-sign-in fa-lg"></i> Sign In</a><br>
+                    <a class="btn btn-warning btn-block" target="_blank" href="http://wdeanmedical.com/corp/products_details.html#products-details-portal">Learn More</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <h3 class="hidden-xs hidden-lg">Welcome To Our Family Portal</h3>
+              <h2 class="hidden-xs hidden-sm hidden-md visible-lg">Welcome To Our Family Portal</h2>
+              <img class="img-responsive" alt="Responsive image" src="images/portal_woman.jpg"><br>
+              <div class="row hidden-xs visible-sm hidden-md hidden-lg facts-sm">
+                <div class="col-xs-6">
+                  <ul>
+                    <li>Communicate with your doctor</li> 
+                    <li>Access your test results</li> 
+                    <li>Request prescription renewals</li> 
+                    <li>View your recent visits</li>
+                  </ul>
+                </div>
+                <div class="col-xs-6">
+                  <ul>
+                    <li>Enter medical history on-line</li> 
+                    <li>Complete Patient Registration </li> 
+                    <li>Check lab results</li> 
+                    <li>Schedule appointments</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row hidden-xs hidden-sm visible-md hidden-lg facts-md">
+                <div class="col-xs-6">
+                  <ul>
+                    <li>Communicate with your doctor</li> 
+                    <li>Access your test results</li> 
+                    <li>Request prescription renewals</li> 
+                    <li>View your recent visits</li>
+                  </ul>
+                </div>
+                <div class="col-xs-6">
+                  <ul>
+                    <li>Enter medical history on-line</li> 
+                    <li>Complete Patient Registration </li> 
+                    <li>Check lab results</li> 
+                    <li>Schedule appointments</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row hidden-xs hidden-sm hidden-md visible-lg">
+                <div class="col-xs-6">
+                  <ul>
+                    <li>Communicate with your doctor</li> 
+                    <li>Access your test results</li> 
+                    <li>Request prescription renewals</li> 
+                    <li>View your recent visits</li>
+                  </ul>
+                </div>
+                <div class="col-xs-6">
+                  <ul>
+                    <li>Enter medical history on-line</li> 
+                    <li>Complete Patient Registration </li> 
+                    <li>Check lab results</li> 
+                    <li>Schedule appointments</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default background-op">
+        <div class="panel-body panel-pad"> 
+          <div class="row">
+            <div class="col-sm-6">
+              <br>
+              <img class="img-responsive center-block hidden-xs" alt="Responsive image" src="images/kid-dog.png">
+            </div>
+            <div class="col-sm-6">
+              <h4 class="hidden-lg">News & Updates</h4>
+              <h2 class="hidden-xs hidden-sm hidden-md visible-lg">News & Updates</h2>
+              <a class="twitter-timeline" href="https://twitter.com/WDeanMedical" data-widget-id="451944201047928832">Tweets by @WDeanMedical</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SIGN IN SCREEN -->
+
+    <!-- NEW PATIENT SCREEN -->
+    <div id="new-patient-screen" class="container">
+      <div class="row user-label">     
+        <div class="col-xs-6 visible-xs">
+          <h4><i class="fa fa-cogs"></i> Welcome <span class="app-patient-full-name"></span></h4>
+        </div>
+        <div class="col-xs-6 hidden-xs">
+          <h1><i class="fa fa-cogs"></i> Welcome <span class="app-patient-full-name"></span></h1>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">    
+          <h3 class="span12 text-center">Complete Your Patient Information</h3>
+          <br>
+          <div class="container">
+            <form class="form-horizontal">
+              <div class="row">
+                <div class="col-sm-6">
+                <div><img id="new-patient-photo" src="images/headshot_placeholder.jpg" class="img-responsive headshot-sm" alt="Patient Photo"></div>
+                  <div class="btn-group-vertical-sm">              
+                   <div class="btn btn-success fileinput-button">
+                     <div id="new-patient-photo-upload"></div>
+                   </div>
+                   <br>
+                   <br>
+                   <div id="new-patient-photo-upload-progress" class="progress"> 
+                     <div class="progress-bar progress-bar-success"></div> 
+                   </div>
+                  </div>                  
+                  <div class="form-group">
+                    <label for="new-patient-last-name" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="new-patient-last-name">
+                      <span id="new-patient-last-name-validation" class="form-element-error"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-patient-first-name" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-5">
+                      <input type="text" class="form-control" id="new-patient-first-name">
+                      <span id="new-patient-first-name-validation" class="form-element-error"></span>
+                    </div>
+                    <label for="new-patient-middle-initial" class="col-sm-1 control-label">MI</label>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" id="new-patient-middle-initial">
+                      <span id="new-patient-middle-initial-validation" class="form-element-error"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-patient-ssn" class="col-sm-3 control-label">SSN</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="new-patient-ssn" placeholder="000-00-0000">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-patient-dob" class="col-sm-3 control-label">Date of birth</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="new-patient-dob" placeholder="MM/DD/YYYY">
+                      <span id="new-patient-dob-validation" class="form-element-error"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="new-patient-gender" class="col-sm-3 control-label">Gender</label>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="new-patient-gender">
+                          <option value="">Choose</option>
+                          <option value="M">Male</option>
+                          <option value="F">Female</option>
+                        </select>
+                        <span id="new-patient-gender-validation" class="form-element-error"></span>
+                      </div>
+                      <label for="new-patient-maritial-status" class="col-sm-2 control-label">Marital</label>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="new-patient-maritial-status">
+                          <option value="">Choose</option>
+                          <option value="1">Single</option>
+                          <option value="2">Married</option>
+                          <option value="3">Divorced</option>
+                          <option value="4">Widowed</option>
+                          <option value="5">Other</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="new-patient-race" class="col-sm-3 control-label">Race</label>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="new-patient-race">
+                          <option value="7">Choose</option>
+                          <option value="1">White</option>
+                          <option value="2">Black or African American</option>
+                          <option value="3">Asian</option>
+                          <option value="4">American Indian/ Alaskan Native</option>
+                          <option value="5">Native Hawaiian or Other Pacific Islander</option>
+                          <option value="6">More than one race</option>
+                          <option value="7">Unknown or Not Reported</option>
+                        </select>
+                      </div>
+                      <label for="new-patient-ethnicity" class="col-sm-2 control-label">Ethnicity</label>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="new-patient-ethnicity">
+                          <option value="3">Choose</option>
+                          <option value="1">Not Hispanic or Latino</option>
+                          <option value="2">Hispanic or Latino</option>
+                          <option value="3">Unknown or Not Reported</option>
+                        </select>
+                      </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="new-patient-address1" class="col-sm-3 control-label">Address</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" id="new-patient-address1">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="new-patient-address2" class="col-sm-3 control-label"></label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" id="new-patient-address2">
+                        <span id="new-patient-address-validation" class="form-element-error"></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="new-patient-city" class="col-sm-3 control-label">City</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" id="new-patient-city">
+                        <span id="new-patient-city-validation" class="form-element-error"></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="new-patient-us-state" class="col-sm-3 control-label">State</label>
+                      <div class="col-sm-3">
+                        <select id="new-patient-us-state" class="form-control"></select>
+                        <span id="new-patient-us-state-validation" class="form-element-error"></span>
+                      </div>
+                      <label for="new-patient-postal-code" class="col-sm-2 control-label">Zip</label>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control input-sm" id="new-patient-postal-code" placeholder="00000">
+                        <span id="new-patient-postal-code-validation" class="form-element-error"></span>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-6"> 
+                   <div class="form-group">
+                    <label for="new-patient-email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="new-patient-email">
+                      <span id="new-patient-email-validation" class="form-element-error"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-patient-email-confirm" class="col-sm-3 control-label">Confirm Email</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="new-patient-email-confirm">
+                      <span id="new-patient-email-confirm-validation" class="form-element-error"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-patient-password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-8">
+                      <input type="password" class="form-control" id="new-patient-password">
+                      <span id="new-patient-password-validation" class="form-element-error"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-patient-password-confirm" class="col-sm-3 control-label">Confirm Password</label>
+                    <div class="col-sm-8">
+                      <input type="password" class="form-control" id="new-patient-password-confirm">
+                      <span id="new-patient-password-confirm-validation" class="form-element-error"></span>
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="new-patient-occupation" class="col-sm-3 control-label">Occupation</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" id="new-patient-occupation">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="new-patient-employed" class="col-sm-3 control-label">Employed</label>
+                      <div class="col-sm-3">
+                        <select class="form-control" id="new-patient-employed">
+                          <option value="">Choose</option>
+                          <option value='yes'>Yes</option>
+                          <option value='no'>No</option>
+                          <option value='retired'>Retired</option>
+                          <option value='na'>NA</option>
+                        </select>
+                      </div>
+                      <div class="col-sm-5">
+                        <input id="new-patient-employer" type="text" class="form-control input-sm" placeholder="Employer Name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="new-patient-school" class="col-sm-3 control-label">School</label>
+                    <div class="col-sm-3">
+                      <select class="form-control" id="new-patient-school">
+                        <option value="">Choose</option>
+                        <option value="ft">Full Time</option>
+                        <option value="pt">Part Time</option>
+                        <option value="no">No</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-5">
+                      <input id="new-patient-school-name" type="text" class="form-control input-sm" placeholder="School Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-patient-primary-phone" class="col-sm-3 control-label">Primary Phone</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control input-sm" id="new-patient-primary-phone" placeholder="000-000-0000">
+                      <span id="new-patient-primary-phone-validation" class="form-element-error"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-patient-secondary-phone" class="col-sm-3 control-label">Secondary Phone</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control input-sm" id="new-patient-secondary-phone" placeholder="000-000-0000">
+                    </div>
+                  </div>
+			             <div class="row">
+			               <div class="col-md-4">
+			                <label for="new-patient-mother-alive-yes">Mother</label>
+			                <div class="form-group">            
+			                  <label class="radio-inline"><input type="radio" id="new-patient-mother-alive-yes" value="true">Living</label>
+			                  <label class="radio-inline"><input type="radio" id="new-patient-mother-alive-no" value="false">Deceased</label>
+			                </div>
+			              </div>
+			              <div class="col-md-5">
+			                <div class="form-group">
+			                  <label for="new-patient-mother-death-reason">Reason</label>
+			                  <input type="text" class="form-control form-control-unsaved" id="new-patient-mother-death-reason">
+			                </div>
+			              </div>
+			              </div>
+			             <div class="row">
+			              <div class="col-md-4">
+			                <label for="new-patient-father-alive-yes">Father</label>
+			                <div class="form-group">
+			                  <label class="radio-inline"><input type="radio" id="new-patient-father-alive-yes" value="true">Living</label>
+			                  <label class="radio-inline"><input type="radio" id="new-patient-father-alive-no" value="false">Deceased</label>
+			                </div>
+			              </div>
+			              <div class="col-md-5">
+			                <div class="form-group">
+			                  <label for="new-patient-father-death-reason">Reason</label>
+			                  <input type="text" class="form-control form-control-unsaved" id="new-patient-father-death-reason">
+			                </div>
+			              </div>
+			            </div>
+			            <div class="row">
+			              <div class="col-md-9">
+			                <div class="form-group">
+			                  <label for="new-patient-past-s-m">Past Surgeries Or Medical Conditions</label>
+			                  <textarea id="new-patient-past-s-m" class="form-control form-control-unsaved" rows="5"></textarea>
+			                  <div class="form-control-saved edit-on-select" id="new-patient-past-s-m-saved" contenteditable="true">&nbsp;</div>
+			                </div>
+			              </div>
+			            </div>
+			            <div class="row">
+			              <div class="col-xs-9">
+			                <label class="sub-title">Family History</label>
+			              </div>
+			            </div>
+			            <div class="row">
+			              <div class="col-xs-3">
+			                <div class="form-group">
+			                  <div class="checkbox"><label><input name="new-patient-fam-hist" type="checkbox" value="">Cancer</label></div>
+			                  <div class="checkbox"><label><input name="new-patient-fam-hist" type="checkbox" value="">Diabetes</label></div>
+			                  <div class="checkbox"><label><input name="new-patient-fam-hist" type="checkbox" value="">Heart problems</label></div>
+			                </div>
+			              </div>
+			              <div class="col-xs-3">
+			                <div class="form-group">
+			                  <div class="checkbox"><label><input name="new-patient-fam-hist" type="checkbox" value="">Hepatitis</label></div>
+			                  <div class="checkbox"><label><input name="new-patient-fam-hist" type="checkbox" value="">High BP</label></div>
+			                  <div class="checkbox"><label><input name="new-patient-fam-hist" type="checkbox" value="">HIV</label></div>
+			                </div>
+			              </div>
+			              <div class="col-xs-3">
+			                <div class="form-group">
+			                  <div class="checkbox"><label><input name="new-patient-fam-hist" type="checkbox" value="">Tuberculosis</label></div>
+			                  <div class="checkbox"><label><input name="new-patient-fam-hist" type="checkbox" value="">Other-specify</label></div>
+			                </div>
+			                <input type="text" class="form-control input-sm" id="fam-hist-other">
+			                <div class="form-control-saved edit-on-select" id="new-patient-fam-hist-other-saved" contenteditable="true">&nbsp;</div>
+			              </div>
+			            </div>
+			            <div class="row">
+			              <div class="col-md-9">
+			                <div class="form-group">
+			                  <label for="new-patient-fam-hist-notes">Family History Notes</label>
+			                  <textarea id="new-patient-fam-hist-notes" class="form-control form-control-unsaved" rows="5"></textarea>
+			                  <div class="form-control-saved edit-on-select" id="new-patient-fam-hist-notes-saved" contenteditable="true">&nbsp;</div>
+			                </div>
+			              </div>
+			            </div>
+			            <div class="row">
+			              <div class="col-md-6">
+			                <label class="sub-title">Allergies</label>
+			                <div class="form-group">
+			                  <label for="new-patient-allerg-food">Food</label>
+			                  <input type="text" class="form-control form-control-unsaved" id="new-patient-allerg-food">
+			                  <div class="form-control-saved edit-on-select" id="new-patient-allerg-food-saved" contenteditable="true">&nbsp;</div>
+			                </div>
+			                <div class="form-group">
+			                  <label for="new-patient-allerg-drug">Drug</label>
+			                  <input type="text" class="form-control form-control-unsaved" id="new-patient-allerg-drug">
+			                  <div class="form-control-saved edit-on-select" id="new-patient-allerg-drug-saved" contenteditable="true">&nbsp;</div>
+			                </div>
+			                <div class="form-group">
+			                  <label for="new-patient-allerg-env">Environment</label>
+			                  <input type="text" class="form-control form-control-unsaved" id="new-patient-allerg-env">
+			                  <div class="form-control-saved edit-on-select" id="new-patient-allerg-env-saved" contenteditable="true">&nbsp;</div>
+			                </div>
+			              </div>
+			            </div>
+			            <div class="row">
+			              <div class="col-md-9">
+			                <label class="sub-title">Substances</label>
+			                <div class="form-group">
+			                  <label>Currently </label>
+			                  <label class="checkbox-inline"><input type="checkbox" name="new-patient-subst" value="smoke"> Smoke</label>
+			                  <label class="checkbox-inline"><input type="checkbox" name="new-patient-subst" value="drink"> Drink</label>
+			                </div>                
+			                  <div class="form-group">
+			                    <div class="col-sm-3">
+			                       <label for="new-patient-years-smoked">Smoke Pks/Day</label>
+			                       <input type="text" class="form-control form-control-unsaved" id="new-patient-smoke-pks-day">
+			                       <label for="new-patient-years-smoked">Years smoked</label>
+			                       <input type="text" class="form-control form-control-unsaved" id="new-patient-years-smoked">
+			                       <label for="new-patient-smoke-years-quit">Years Quit smoking</label>
+			                       <input type="text" class="form-control form-control-unsaved" id="new-patient-smoke-years-quit">
+			                    </div>
+			                  </div>
+			              </div>
+			            </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="panel-footer text-right">
+          <a id="new-patient-cancel" class="app-dashboard-link btn btn-default">Cancel</a>
+          <a id="new-patient-save" class="btn btn-default">Save</a>
+        </div>
+      </div>
+    </div>
+    <!-- NEW PATIENT SCREEN -->
+    
+    <!-- DASHBOARD SCREEN -->
+    <div id="dashboard-screen" class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3 class="visible-xs"><i class="fa fa-dashboard fa-lg"></i> Dashboard</h3>
+          <h2 class="text-right hidden-xs"><i class="fa fa-dashboard fa-lg"></i> Dashboard</h2>
+          <hr class="divider2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-3 text-center">
+                  <h2>Welcome!</h2>  
+                  <img class="img-responsive center-block" alt="Responsive image" src="images/headshot_placeholder.jpg">
+                  <p class="app-patient-full-name"></p> 
+                </div>
+                <div class="col-sm-5">
+                  <h4>Your Recent Activity</h4>
+                  <hr class="divider3">                                                   
+                  <p><strong>Patient ID#:</strong></p><p>IIW223</p>
+                  <p><strong>Next Appointment:</strong>/<p><p>Tuesday, January 14, 2014</p>
+                  <p><strong>Last Appointment was:</strong></p><p>Tuesday, January 14, 2014</p>
+                  <p><strong>For:</strong></p><p>Check Up</p>
+                  <hr class="divider3 visible-xs">
+                </div>
+                <div class="col-sm-4">
+                  <h4>Your Family</h4>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img class="img-responsive img-pad" src="images/headshot_placeholder.jpg" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>Patient Name</h4>
+                          <h5>Relationship</h5>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12 col-md-4 col-md-offset-8">
+                        <a class="btn btn-default btn-block"><i class="fa fa-eye"></i> View</a>
+                        <a class="btn btn-default btn-block"><i class="fa fa-edit"></i> Edit</a>
+                        <a class="btn btn-default btn-block"><i class="fa fa-times"></i> Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- DASHBOARD SCREEN -->
+    
+    
+    <!-- YOUR RECORDS SCREEN -->
+    <div class="container" id="your-records-screen">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3 class="visible-xs"><i class="fa fa-folder-open fa-lg"></i> Your Records</h3>
+          <h2 class="text-right hidden-xs"><i class="fa fa-folder-open fa-lg"></i> Your Records</h2>
+          <hr class="divider2">
+
+          <button  id="app-tests-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#tests">
+            <i class="fa fa-check-square-o fa-lg"></i> Test Results <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="tests" class="sections collapse">
+            <a id="back-to-tests-btn" class="btn btn-primary pull-right"> <i class="fa fa-chevron-left"></i> Back </a>
+            <h3><i class="fa fa-check-square-o fa-lg"></i><span class="app-test-results-title">Test Results</span></h3>
+            
+            <h5 id="app-tests-subtitle">Click on a row to see your test results.</h5>
+            <div id="patient_medical_tests_table" class="table-responsive"></div>
+            <div id="patient_medical_test_components_table" class="table-responsive"></div>
+          </div>
+          <button id="app-medications-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#meds">
+            <i class="fa fa-flask fa-lg"></i> Medications <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="meds" class="sections collapse">
+            <h3><i class="fa fa-flask fa-lg"></i> Medications</h3>
+            <h5>Click on About This Medication to see additional information regarding a medication.</h5>
+            <p>Your YourHealth Online message to have a new updated (renewal) prescription written will be sent to your Clinician's office.
+            <p>The prescription will be sent to your pharmacy within 2 business days. Please contact your pharmacy prior to picking up 
+            your medication to be sure it is ready.</p>
+            <p><strong>Important note:</strong> If you still have refills on your current prescription for this medication your YourHealth 
+            Online message does not apply. Instead you must contact your pharmacy directly to have your prescription refilled. Thank you.</p>
+            <div id="patient_medications_table" class="table-responsive"></div>
+          </div>
+          <button id="app-allergies-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#allergies">
+            <i class="fa fa-pagelines fa-lg"></i> Allergies <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="allergies" class="sections collapse">
+            <h3><i class="fa fa-pagelines fa-lg"></i> Your Allergies</h3>
+            <h5>The Allergies page displays what you are allergic to, what reaction you have to the allergen.</h5>
+            <div id="patient_allergies_table" class="table-responsive"></div>
+          </div>
+          <button id="app-immunizations-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#immun">
+            <i class="fa fa-medkit fa-lg"></i> Immunizations <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="immun" class="sections collapse">
+            <h3><i class="fa fa-medkit fa-lg"></i> Your Immunizations</h3>
+            <h5>Below is a list of the immunizations you have received.</h5>
+            <div id="patient_immunizations_table" class="table-responsive"></div>
+          </div>
+          <button id="app-prevcare-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#prev">
+            <i class="fa fa-heart fa-lg"></i> Preventive Care <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="prev" class="sections collapse">
+            <h3><i class="fa fa-heart fa-lg"></i> Preventive Care</h3>
+            <p>Preventive medicine plays an important part in your health and overall well being. The following procedures are recommended for people of your 
+            age, sex, and medical history.</p> <p>To request an appointment for a procedure listed below that is due soon or overdue, please select the 
+            corresponding checkbox and click the Request Appointment button.</p>
+            <div id="patient_medical_procedures_table" class="table-responsive"></div>
+          </div>
+          <button type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#hist">
+            <i class="fa fa-h-square fa-lg"></i> Medical History <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="hist" class="sections collapse">
+            <h3><i class="fa fa-h-square fa-lg"></i> Your Medical History</h3>
+            <p>We are continually expanding the information from your medical record that you can see on our Family Portal.</p>
+            <p>You now have access to view your past medical and surgical history, as well as your current health issues. 
+            Adolescents and their parents will not see these sections.</p> <p>The descriptions that you see are medical terms 
+            and may be hard to understand. If you have questions about a diagnosis, feel that information is incorrect, or want 
+            to provide updated information, feel free to discuss these with your physician at your next visit or contact our offices 
+            so that we may update your record.</p> <p>Our goal in expanding your health information available through YourHealth Online 
+            is to help you improve your health. Thank you for your understanding as we add new features to our Family Portal.</p>
+            <h5>Medical History</h5>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr><th>ID #</th><th>Last Name</th><th>First Name</th><th>MI</th><th>Birth Date</th><th>SSN</th><th>Phnav</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h5>Surgical History</h5>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr><th>ID #</th><th>Last Name</th><th>First Name</th><th>MI</th><th>Birth Date</th><th>SSN</th><th>Phnav</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <button id="app-health-issues-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#current">
+            <i class="fa fa-warning fa-lg"></i> Current Health Issues <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="current" class="sections collapse">
+            <h3><i class="fa fa-warning fa-lg"></i> Your Health Issues</h3>
+            <p>We are continually expanding the information from your medical record that you can see on our Family Portal.</p>
+            <p>You now have access to view your past medical and surgical history, as well as your current health issues. Adolescents 
+            and their parents will not see these sections.</p> <p>The descriptions that you see are medical terms and may be hard to understand. 
+            If you have questions about a diagnosis, feel that information is incorrect, or want to provide updated information, feel free to 
+            discuss these with your physician at your next visit or contact our offices so that we may update your record.</p> <p>Our goal in 
+            expanding your health information available through YourHealth Online is to help you improve your health. Thank you for your 
+            understanding as we add new features to our Family Portal.</p>
+            <div id="patient_health_issues_table" class="table-responsive"></div>
+          </div>
+          <button id="app-health-trends-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#trends">
+            <i class="fa fa-plus-square fa-lg"></i> Health Trends <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="trends" class="sections collapse">
+            <a id="back-to-health-trends-btn" class="btn btn-primary pull-right"> <i class="fa fa-chevron-left"></i> Back </a>
+            <h3><i class="fa fa-plus-square fa-lg"></i> Health Trends</h3>
+            <p id="app-health-trends-subtitle">The report listed below are available for your use. Click the name of the report you wish to use.</p>
+            <div id="patient_health_trend_reports_table" class="table-responsive"></div>
+            <div id="patient_health_issue_detail_table" class="table-responsive"></div>
+            <canvas id="health-trends-chart-canvas" height="400" width="1200"></canvas> 
+          </div>
+          <button id="app-letters-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#letters">
+            <i class="fa fa-envelope fa-lg"></i> Letters <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="letters" class="sections collapse">
+            <h3><i class="fa fa-envelope fa-lg"></i> Letters</h3>
+            <p>These are current and past letters. Click on one to see more details.</p>
+            <div id="patient_letters_table" class="table-responsive"></div>
+          </div>
+        </div>
+        <hr class="divider2">
+      </div>
+    </div>
+    <!-- YOUR RECORDS SCREEN -->
+    
+    <!-- FAMILY RECORDS SCREEN -->
+    <div class="container" id="family-records-screen">
+      <h3 class="visible-xs"><i class="fa fa-folder-open fa-lg"></i> Family Records</h3>
+      <h2 class="text-right hidden-xs"><i class="fa fa-folder-open fa-lg"></i> Family Records</h2>
+      <hr class="divider2">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Your Family</h4>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <img class="img-pad" src="images/headshot_placeholder.jpg" alt="...">
+                </div>
+                <div class="col-sm-9">
+                  <h4>Patient Name</h4>
+                  <h5>Relationship</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-3 col-md-offset-9">
+                <a class="btn btn-default btn-block"><i class="fa fa-eye"></i> View</a>
+                <a class="btn btn-default btn-block"><i class="fa fa-edit"></i> Edit</a>
+                <a class="btn btn-default btn-block"><i class="fa fa-times"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <img class="img-pad" src="images/headshot_placeholder.jpg" alt="...">
+              </div>
+              <div class="col-sm-9">
+                <h4>Patient Name</h4>
+                <h5>Relationship</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-md-offset-9">
+                <a class="btn btn-default btn-block"><i class="fa fa-eye"></i> View</a>
+                <a class="btn btn-default btn-block"><i class="fa fa-edit"></i> Edit</a>
+                <a class="btn btn-default btn-block"><i class="fa fa-times"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <img class="img-pad" src="images/headshot_placeholder.jpg" alt="...">
+              </div>
+              <div class="col-sm-9">
+                <h4>Patient Name</h4>
+                <h5>Relationship</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-md-offset-9">
+                <a class="btn btn-default btn-block"><i class="fa fa-eye"></i> View</a>
+                <a class="btn btn-default btn-block"><i class="fa fa-edit"></i> Edit</a>
+                <a class="btn btn-default btn-block"><i class="fa fa-times"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-6">
+          <h4>Add Family</h4>
+          <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <img class="img-pad" src="images/headshot_placeholder.jpg" alt="...">
+              </div>
+              <div class="col-sm-9">
+                <form class="form" role="form">
+                  <div class="form-group">
+                    <label class="sr-only" for="inputName">Name</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="exampleInputEmail2">Relationship</label>
+                    <select class="form-control" id="exampleInputEmail2">
+                      <option>Choose Relationship</option>
+                      <option>Sister</option>
+                      <option>Brother</option>
+                      <option>Mother</option>
+                      <option>Father</option>
+                      <option>Daughter</option>
+                      <option>Son</option>
+                      <option>Aunt</option>
+                      <option>Uncle</option>
+                      <option>Niece</option>
+                      <option>Nephew</option>
+                      <option>Cousin (female)</option>
+                      <option>Cousin (male)</option>
+                      <option>Grandmother</option>
+                      <option>Grandfather</option>
+                      <option>Granddaughter</option>
+                      <option>Grandson</option>
+                      <option>Stepsister</option>
+                      <option>Stepbrother</option>
+                      <option>Stepmother</option>
+                      <option>Stepfather</option>
+                      <option>Stepdaughter</option>
+                      <option>Stepson</option>
+                      <option>Sister-in-law</option>
+                      <option>Brother-in-law</option>
+                      <option>Mother-in-law</option>
+                      <option>Father-in-law</option>
+                      <option>Daughter-in-law</option>
+                      <option>Son-in-law</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-3 col-md-offset-9">
+                <a class="btn btn-default btn-block"><i class="fa fa-plus"></i> Add</a>
+                <a class="btn btn-default btn-block"><i class="fa fa-times"></i> Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- FAMILY RECORDS SCREEN -->
+    
+    <!-- MESSAGES SCREEN -->
+    <div class="container" id="messages-screen">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3 class="visible-xs"><i class="fa fa-inbox fa-lg"></i> Messages</h3>
+          <h2 class="text-right hidden-xs"><i class="fa fa-inbox fa-lg"></i> Messages</h2>
+          <hr class="divider2">
+          <button id="app-inbox-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#inbox">
+            <i class="fa fa-inbox fa-lg"></i> Inbox <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="inbox" class="sections collapse">
+            <h3><i class="fa fa-inbox fa-lg"></i> Inbox</h3>
+            <p>Messages that your physicians and their staff have sent to you are listed within your inbox.</p>
+            <p>Click on a message row to view the full text. Messages in bold type are those that are unread.</p>
+            <p>Click on a message to view the full text.</p>
+            <div id="patient_messages_table" class="table-responsive"></div>
+          </div>
+          <button id="app-sent-messages-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#sent">
+            <i class="fa fa-share-square fa-lg"></i> Sent Messages <i class="fa fa-chevron-down fa-lg pull-right">
+          </i></button>
+          <div id="sent" class="sections collapse">
+            <h3><i class="fa fa-share-square fa-lg"></i> Sent Messages</h3>
+            <h5>Click on a message to view the text of the message. Messages in bold have not yet been read by clinic staff.</h5>
+            <div id="patient_sent_messages_table" class="table-responsive"></div>
+          </div>
+          <button id="app-rx-request-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#renew">
+            <i class="fa fa-flask fa-lg"></i> Request Rx Renewal <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="renew" class="sections collapse">
+            <h3><i class="fa fa-flask fa-lg"></i> Rx Renewal</h3>
+            <h5>Step 1 of 2: Choose prescriptions to renew</h5>
+            <p>Your MyHealth Online request to have a new updated (renewal) prescription written will be sent to your Clinician's office. Please submit 
+            a request if you have 0 refills on a medication.</p><p>The prescription must be approved by your provider. Once approved, it will be sent 
+            to your pharmacy within 2 business days. Please contact your pharmacy prior to picking up your medication to be sure it is ready.</p>
+            <p><strong>Important Note:</strong> Please do not submit a MyHealth Online Rx Renewal Request if you simply need a medication refilled by 
+            your pharmacy. Instead you must contact your pharmacy directly to have your prescription refilled.</p>
+            <form class="form" role="form">
+               <div class="form-group">
+                  <label for="rx-request-clinician">To The Office Of:</label>
+                  <select id="rx-request-clinician" class="form-control app-patient-clinicians-select input-lg"></select>
+                  <span id="rx-request-clinician-validation" class="form-element-error"></span>
+                </div>
+                <div class="form-group">
+                  <label for="rx-request-message">Message:</label>
+                  <textarea id="rx-request-message" class="form-control" rows="6"></textarea>
+                  <span id="rx-request-message-validation" class="form-element-error"></span>
+                </div>
+              <div class="form-group">
+                <a id="rx-request-submit" class="btn btn-success btn-lg pull-right">Submit</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MESSAGES SCREEN -->
+    
+    
+    <!-- APPOINTMENTS SCREEN -->
+    <div class="container" id="appointments-screen">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3 class="visible-xs"><i class="fa fa-folder-open fa-lg"></i> Appointments</h3>
+          <h2 class="text-right hidden-xs"><i class="fa fa-folder-open fa-lg"></i> Appointments</h2>
+          <hr class="divider2">
+          <button id="app-upcoming-appointments-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#upapp">
+            <i class="fa fa-calendar fa-lg"></i> Upcoming <i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="upapp" class="sections collapse">
+            <h4><i class="fa fa-calendar fa-lg"></i> Upcoming Appointments</h4>
+            <h5>Click on a row to see more details about an appointment.</h5>
+            <div id="upcoming_appointments_table" class="table-responsive"></div>
+          </div>
+          <button id="app-past-appointments-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#pstapp">
+            <i class="fa fa-calendar fa-lg"></i> Past<i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="pstapp" class="sections collapse">
+            <h3><i class="fa fa-calendar fa-lg"></i> Past Appointments</h3>
+            <h5>Click on a row to see more details about an appointment.</h5>
+            <div id="past_appointments_table" class="table-responsive"></div>
+          </div>
+          <button id="app-appt-request-btn" type="button" class="btn btn-primary btn-block btn-lg btn-nav2 text-left" data-toggle="collapse" data-target="#reqstapp">
+            <i class="fa fa-calendar fa-lg"></i> Request<i class="fa fa-chevron-down fa-lg pull-right"></i>
+          </button>
+          <div id="reqstapp" class="sections collapse">
+            <h3><i class="fa fa-calendar fa-lg"></i> Request Appointment</h3>
+            <h5>If you would like to schedule an appointment for a different reason, please call the clinic.</h5><br>
+            <h5>From: <span class="app-patient-appt-name"></span></h5><br>
+            <form class="form" role="form">
+              <div class="form-group">
+                <label for="appt-request-clinician">Want to see:</label>
+                <select id="appt-request-clinician" class="form-control app-patient-clinicians-select input-lg"></select>
+                <span id="appt-request-clinician-validation" class="form-element-error"></span>
+              </div>
+              <div class="form-group">
+                <label for="appt-request-would-see">Would see:</label>
+                <select id="appt-request-would-see" class="form-control app-patient-clinicians-select input-lg"></select>
+                <span id="appt-request-would-see-validation" class="form-element-error"></span>
+              </div>
+              <div class="form-group">
+               <label for="appt-request-visit-reason">Reason for visit:</label>
+               <select id="appt-request-visit-reason" class="form-control input-lg">
+                 <option>Physical (routine)</option>
+                 <option>Follow up appt.</option>
+                 <option>Non-Urgent Issue</option>
+               </select>
+                <span id="appt-request-visit-reason-validation" class="form-element-error"></span>
+             </div>
+             <div class="form-group">
+               <h4>Preferred Dates</h4>
+             </div>
+             <div class="form-group">
+               <label for="appt-request-from">From:</label>
+               <input id="appt-request-from" type="text" class="form-control input-lg">
+               <span id="appt-request-from-validation" class="form-element-error"></span>
+             </div>
+             <div class="form-group">
+               <label for="appt-request-to">To:</label>
+               <input id="appt-request-to" type="text" class="form-control input-lg">
+               <span id="appt-request-to-validation" class="form-element-error"></span>
+             </div>
+             <div class="form-group">
+               <h4>Preferred Times</h4>
+             </div>
+             <div class="form-group">
+               <div class="table-responsive">
+                 <table class="table table-condensed">
+                 <tbody>
+                   <tr><td>&nbsp;</td><td>Mon</td><td>Tues</td><td>Wed</td><td>Thur</td><td>Fri</td></tr>
+                   <tr>
+                     <td>Morning</td>
+                     <td><input id="ar-mon-morn" class="checkbox appt-request-cb" type="checkbox" title="Mon Morning" value="Mon Morning" /></td>
+                     <td><input id="ar-tues-morn" class="checkbox appt-request-cb" type="checkbox" title="Tues Morning" value="Tues Morning" /></td>
+                     <td><input id="ar-wed-morn" class="checkbox appt-request-cb" type="checkbox" title="Wed Morning" value="Wed Morning" /></td><td>
+                     <input id="ar-thurs-morn" class="checkbox appt-request-cb" type="checkbox" title="Thur Morning" value="Thur Morning" /></td>
+                     <td><input id="ar-fri-morn" class="checkbox appt-request-cb" type="checkbox" title="Fri Morning" value="Fri Morning" /></td>
+                  </tr>
+                  <tr>
+                    <td>Afternoon</td>
+                    <td><input id="ar-mon-aft" class="checkbox appt-request-cb" type="checkbox" title="Mon Afternoon" value="Mon Afternoon" /></td>
+                    <td><input id="ar-tues-aft" class="checkbo appt-request-cb" type="checkbox" title="Tues Afternoon" value="Tues Afternoon" /></td>
+                    <td><input id="ar-wed-aft" class="checkbox appt-request-cb" type="checkbox" title="Wed Afternoon" value="Wed Afternoon" /></td>
+                    <td><input id="ar-thurs-aft" class="checkbox appt-request-cb" type="checkbox" title="Thur Afternoon" value="Thur Afternoon" /></td>
+                    <td><input id="ar-fri-aft" class="checkbox appt-request-cb" type="checkbox" title="Fri Afternoon" value="Fri Afternoon" /></td>
+                 </tr>
+               </tbody>
+               </table>
+             </div>
+            </div>
+            <div class="form-group">
+              <label for="appt-request-message">Message:</label>
+              <textarea id="appt-request-message" class="form-control" rows="6"></textarea>
+            </div>
+            <div class="form-group">
+              <a id="appt-request-submit" class="btn btn-success btn-lg pull-right">Submit</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <h2>Your Calendar</h2>
+    <div class="responsive-iframe-container">    
+      <iframe class="calendar" src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=0dk9o999e0m9enmu5emaa286e8%40group.calendar.google.com&amp;color=%23B1440E&amp;ctz=America%2FNew_York"></iframe>
+    </div>
+    </div>
+    <!-- APPOINTMENTS SCREEN -->
+    
+    <!-- SEND MESSAGE SCREEN -->
+    <div class="container" id="send-message-screen">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3 class="visible-xs"><i class="fa fa-user-md fa-lg"></i> Send Message</h3>
+          <h2 class="text-right hidden-xs"><i class="fa fa-user-md fa-lg"></i> Send Message</h2>
+          <hr class="divider2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h4>Send Your Doctor A Message</h4>
+              <p>We will attempt to respond to your message within one business day, but delays may occur. The Family Portal 
+              should only be used for routine and non-urgent matters. Please do not send messages through the Family Portal 
+              that require urgent attention.</p><p>Messages will be screened by your physician's staff to determine an appropriate 
+              person to respond to your request; please consider this when communicating sensitive information within your message.</p>
+              <p><strong>Please note:</strong> the communication you send or receive may become a part of your medical record.</p>
+              <p>Send a non-urgent message to your clinic.</p><p>Expect a response within 2 business days.</p>
+              <h4><strong>From:</strong><span class="app-patient-appt-name"></span></h4><br>
+              <form class="form" role="form">
+                <div class="form-group">
+                  <label for="send-message-clinician">To The Office Of:</label>
+                  <select id="send-message-clinician" class="form-control app-patient-clinicians-select input-lg"></select>
+                  <span id="send-message-clinician-validation" class="form-element-error"></span>
+                </div>
+                <div class="form-group">
+                  <label for="send-message-subject">Subject:</label>
+                  <select id="send-message-subject" class="form-control input-lg">
+                    <option>Medical Advice</option>
+                    <option>Lab Results</option>
+                    <option>Referral</option>
+                    <option>Consult</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="send-message-message">Message:</label>
+                  <textarea id="send-message-message" class="form-control" rows="6"></textarea>
+                  <span id="send-message-message-validation" class="form-element-error"></span>
+                </div>
+                <div class="form-group">
+                  <a id="send-message-submit" class="btn btn-success btn-lg pull-right">Submit</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SEND MESSAGE SCREEN -->
+    
+    
+    <!-- SETTINGS SCREEN -->
+    <div class="container" id="settings-screen">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3 class="visible-xs"><i class="fa fa-cog fa-lg"></i> Account Settings</h3>
+          <h2 class="text-right hidden-xs"><i class="fa fa-cog fa-lg"></i> Account Settings</h2>
+          <hr class="divider2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form role="form">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h3>Edit User Information</h3>
+                    <div class="form-group">
+                      <label for="user-name">User Name</label>
+                      <input type="text" class="form-control" id="user-name" placeholder="">
+                      <span class="help-block">If you want to change your username you must <a class="panel-link" href="#">logout</a> and <a class="panel-link" href="#">create a new account</a>.</span>
+                    </div>
+                    <div class="form-group">
+                      <label for="email-address">Email Address</label>
+                      <input type="text" class="form-control" id="email-address" placeholder="">
+                    </div>
+                    <h3>Change Password</h3>
+                    <div class="form-group">
+                      <label for="user-name">Password</label>
+                      <input type="text" class="form-control" id="password" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="conf-password">Confirm Password</label>
+                      <input type="text" class="form-control" id="conf-password" placeholder="">
+                      <span class="help-block">To change the current user password, enter the new password in both fields.</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">                                                                               
+                    <h3>Picture</h3>
+                    <img class="img-responsive" alt="Responsive image" src="images/headshot_placeholder.jpg">                        
+                    <div class="form-group">
+                      <label for="picture">Upload Picture</label>
+                      <input type="file" id="picture">
+                      <p class="help-block">Maximum dimensions are 85x85 and the maximum size is 5000 kB.</p>                        
+                    </div>                     
+                    <h3>Local Settings</h3>
+                    <div class="form-group">
+                      <label for="edit-timezone">Default Time Zone</label>
+                      <select name="timezone" class="form-control" id="edit-timezone">
+                        <option>Choose</option>
+                        <option>(GMT-12:00) International Date Line West</option>
+												<option>(GMT-11:00) Midway Island, Samoa</option>
+												<option>(GMT-10:00) Hawaii</option>
+												<option>(GMT-09:00) Alaska</option>
+												<option>(GMT-08:00) Pacific Time (US & Canada)</option>
+												<option>(GMT-08:00) Tijuana, Baja California</option>
+												<option>(GMT-07:00) Arizona</option>
+												<option>(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+												<option>(GMT-07:00) Mountain Time (US & Canada)</option>
+												<option>(GMT-06:00) Central America</option>
+												<option>(GMT-06:00) Central Time (US & Canada)</option>
+												<option>(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+												<option>(GMT-06:00) Saskatchewan</option>
+												<option>(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
+												<option>(GMT-05:00) Eastern Time (US & Canada)</option>
+												<option>(GMT-05:00) Indiana (East)</option>
+												<option>(GMT-04:00) Atlantic Time (Canada)</option>
+												<option>(GMT-04:00) Caracas, La Paz</option>
+												<option>(GMT-04:00) Manaus</option>
+												<option>(GMT-04:00) Santiago</option>
+												<option>(GMT-03:30) Newfoundland</option>
+												<option>(GMT-03:00) Brasilia</option>
+												<option>(GMT-03:00) Buenos Aires, Georgetown</option>
+												<option>(GMT-03:00) Greenland</option>
+												<option>(GMT-03:00) Montevideo</option>
+												<option>(GMT-02:00) Mid-Atlantic</option>
+												<option>(GMT-01:00) Cape Verde Is.</option>
+												<option>(GMT-01:00) Azores</option>
+												<option>(GMT+00:00) Casablanca, Monrovia, Reykjavik</option>
+												<option>(GMT+00:00) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
+												<option>(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+												<option>(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+												<option>(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+												<option>(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
+												<option>(GMT+01:00) West Central Africa</option>
+												<option>(GMT+02:00) Amman</option>
+												<option>(GMT+02:00) Athens, Bucharest, Istanbul</option>
+												<option>(GMT+02:00) Beirut</option>
+												<option>(GMT+02:00) Cairo</option>
+												<option>(GMT+02:00) Harare, Pretoria</option>
+												<option>(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
+												<option>(GMT+02:00) Jerusalem</option>
+												<option>(GMT+02:00) Minsk</option>
+												<option>(GMT+02:00) Windhoek</option>
+												<option>(GMT+03:00) Kuwait, Riyadh, Baghdad</option>
+												<option>(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
+												<option>(GMT+03:00) Nairobi</option>
+												<option>(GMT+03:00) Tbilisi</option>
+												<option>(GMT+03:30) Tehran</option>
+												<option>(GMT+04:00) Abu Dhabi, Muscat</option>
+												<option>(GMT+04:00) Baku</option>
+												<option>(GMT+04:00) Yerevan</option>
+												<option>(GMT+04:30) Kabul</option>
+												<option>(GMT+05:00) Yekaterinburg</option>
+												<option>(GMT+05:00) Islamabad, Karachi, Tashkent</option>
+												<option>(GMT+05:30) Sri Jayawardenapura</option>
+												<option>(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+												<option>(GMT+05:45) Kathmandu</option>
+												<option>(GMT+06:00) Almaty, Novosibirsk</option>
+												<option>(GMT+06:00) Astana, Dhaka</option>
+												<option>(GMT+06:30) Yangon (Rangoon)</option>
+												<option>(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+												<option>(GMT+07:00) Krasnoyarsk</option>
+												<option>(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
+												<option>(GMT+08:00) Kuala Lumpur, Singapore</option>
+												<option>(GMT+08:00) Irkutsk, Ulaan Bataar</option>
+												<option>(GMT+08:00) Perth</option>
+												<option>(GMT+08:00) Taipei</option>
+												<option>(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+												<option>(GMT+09:00) Seoul</option>
+												<option>(GMT+09:00) Yakutsk</option>
+												<option>(GMT+09:30) Adelaide</option>
+												<option>(GMT+09:30) Darwin</option>
+												<option>(GMT+10:00) Brisbane</option>
+												<option>(GMT+10:00) Canberra, Melbourne, Sydney</option>
+												<option>(GMT+10:00) Hobart</option>
+												<option>(GMT+10:00) Guam, Port Moresby</option>
+												<option>(GMT+10:00) Vladivostok</option>
+												<option>(GMT+11:00) Magadan, Solomon Is., New Caledonia</option>
+												<option>(GMT+12:00) Auckland, Wellington</option>
+												<option>(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
+												<option>(GMT+13:00) Nuku'alofa</option>
+                      </select>
+                      <span class="help-block">Select your current local time. If in doubt, choose the timezone that is closest to your location which has the same rules for daylight saving time. Dates and times throughout this site will be displayed using this time zone.</span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="panel-footer text-right">
+              <a href="#" class="btn btn-danger btn-lg">Save</a>
+              <a href="#" class="btn btn-default btn-lg">Cancel</a>
+            </div> 
+          </div>
+        </div> 
+      </div>
+    </div>
+    <!-- SETTINGS SCREEN -->
+    
+    <footer class="container">
+      <div class="row">
+        <div class="hidden-xs hidden-sm col-md-2 sitemap">
+          <h6>Corp Site</h6>
+          <ul>
+            <li><a href="index.html#top">Home Page</a></li>
+            <li><a href="products_details.html#products">Products Page</a></li>
+            <li><a href="products_details.html#products-details-cloud">The Cloud</a></li>
+            <li><a href="shopping_cart.html#pricing-plans-intro">Product Pricing</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>        
+          </ul>
+        </div>
+        <div class="hidden-xs col-sm-3 hidden-md hidden-lg sitemap-sm">
+          <h6>Corp Site</h6>
+          <ul>
+            <li><a href="index.html#top">Home Page</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/corp/products_details.html#ehr-top">Products Page</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/corp/products_details.html#products-details-cloud">The Cloud</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/corp/shopping_cart.html#pricing-plans-intro">Product Pricing</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/corp/index.html#contact">Contact Us</a></li>        
+          </ul>
+        </div>
+        <div class="visible-xs col-xs-6 sitemap-xs">
+          <h6>Site Map</h6>
+          <ul>
+            <li><a target="_blank" href="http://www.wdeanmedical.com">Home Page</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/corp/products_details.html#ehr-top">Products Page</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/corp/products_details.html#products-details-cloud">The Cloud</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/corp/shopping_cart.html#pricing-plans-intro">Product Pricing</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/corp/index.html#contact">Contact Us</a></li>        
+          </ul>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-2">
+          <h6>Help Forums</h6>
+          <ul>
+            <li><a target="_blank" href="http://wdeanbill.discussioncommunity.com/">Community</a></li>
+            <li><a target="_blank" href="http://wdeanbill.discussioncommunity.com/?forum=311612">Patient Portal</a></li>
+            <li><a target="_blank" href="http://wdeanbill.discussioncommunity.com/?forum=311611">Rugged EHR</a></li>
+            <li><a target="_blank" href="http://wdeanbill.discussioncommunity.com/?forum=311613">Practice Manager</a></li>
+            <li><a target="_blank" href="http://wdeanbill.discussioncommunity.com/?forum=311614">Medical Websites</a></li>        
+          </ul>
+        </div>
+        <div class="hidden-xs col-sm-3 col-md-2">
+          <h6>Software Demos</h6>
+          <ul>
+            <li><a target="_blank" href="http://wdeanmedical.com/ehr/">Electronic Health Records</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/pm/">Practice Manager</a></li>  
+            <li><a target="_blank" href="http://wdeanmedical.com/portal/">Patient Portal</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/portal/">Pleasantville Medical</a></li>
+            <li class="hidden-md hidden-lg"><a target="_blank" href="#">White Papers</a></li>      
+          </ul>
+        </div>
+        <div class="visible-xs col-xs-6 softdemo-xs">
+          <h6>Software Demos</h6>
+          <ul>
+            <li><a target="_blank" href="http://wdeanmedical.com/ehr/">Electronic Health Records</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/pm/">Practice Manager</a></li>  
+            <li><a target="_blank" href="http://wdeanmedical.com/portal/">Patient Portal</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/portal/">Pleasantville Medical</a></li>
+            <li class="hidden-md hidden-lg"><a target="_blank" href="#">White Papers</a></li>      
+          </ul>
+        </div>
+        <div class="col-md-2 hidden-xs hidden-sm">
+          <h6>White Papers</h6>
+          <ul class="map-4">
+            <li><a target="_blank" href="http://wdeanmedical.com/docs/wdm_overview.pdf">General</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/docs/wdm_pp.pdf">Patient Portal</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/docs/wdm_ehr.pdf">Rugged EHR</a></li>
+            <li><a target="_blank" href="http://wdeanmedical.com/docs/wdm_pm.pdf">Practice Manager</a></li>         
+          </ul>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-2">
+          <h6>Social Media</h6>
+          <ul>
+            <li><a target="_blank" href="https://www.facebook.com/WDeanMedical">Facebook Page</a></li>
+            <li><a target="_blank" href="https://twitter.com/WDeanMedical">Twitter Page</a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/company/wdean-medical">Linkedin Page</a></li>
+            <li><a target="_blank" href="https://plus.google.com/+Wdeanmedical/posts">Google+ Page</a></li>
+            <li><a target="_blank" href="http://www.pinterest.com/wdeanmedical">Pinterest Page</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 hidden-xs hidden-sm">
+          <img src="images/WDM-icon120.png" class="img-responsive center-block" alt="Responsive image">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12 hidden-md hidden-lg">
+          <img src="images/WDM-icon120.png" class="img-responsive center-block" alt="Responsive image">
+          <p class="text-center">Copyright &copy; WDean Medical 2014</p>
+        </div>
+        <div class="col-sm-12 hidden-xs hidden-sm">
+          <p class="text-center">Copyright &copy; WDean Medical 2014</p>
+        </div>
+      </div>
+    </footer> 
+    
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse" role="navigation">
+      <p class="navbar-text nav-txt">
+        <a target="_blank" href="https://www.facebook.com/WDeanMedical"><i class=" fa fa-facebook-square fa-2x"></i></a> 
+        <a target="_blank" href="https://twitter.com/WDeanMedical"><i class=" fa fa-twitter-square fa-2x"></i></a> 
+        <a target="_blank" href="http://www.linkedin.com/company/wdean-medical"><i class=" fa fa-linkedin-square fa-2x"></i></a>
+        <a target="_blank" href="http://www.wdeanmedical.com">www.wdeanmedical.com</a>
+      </p>
+    </nav>
+
+  <!-- MODALS -->
+  <div id="modals-placement"></div>
+  <!-- MODALS -->
+  
+  <script src="js/lib/head.min.js"></script>
+  <script src="js/load_scripts.js"></script>
+
+  </body>
+</html>
