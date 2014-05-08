@@ -137,8 +137,8 @@
             <value>com.wdeanmedical.portal.entity.Division</value>
             <value>com.wdeanmedical.portal.entity.Ethnicity</value>
             <value>com.wdeanmedical.portal.entity.Gender</value>
-            <value>com.wdeanmedical.portal.entity.IntakeMedication</value>
-            <value>com.wdeanmedical.portal.entity.IntakeQuestion</value>
+            <value>com.wdeanmedical.portal.entity.EncounterMedication</value>
+            <value>com.wdeanmedical.portal.entity.EncounterQuestion</value>
             <value>com.wdeanmedical.portal.entity.HealthIssue</value>
             <value>com.wdeanmedical.portal.entity.MaritalStatus</value>
             <value>com.wdeanmedical.portal.entity.MedicalHistory</value>
