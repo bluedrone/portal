@@ -90,7 +90,12 @@
             <ref bean="sessionFactory" />
         </property>
     </bean>
-
+    
+     <bean id="activityLogDAO" class="com.wdeanmedical.portal.persistence.ActivityLogDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
 
     <!-- enable the configuration of transactional behavior based on annotations -->
     <tx:annotation-driven transaction-manager="transactionManager" />
@@ -122,6 +127,8 @@
 
         <property name="annotatedClasses">
           <list>
+            <value>com.wdeanmedical.portal.entity.Activity</value>
+            <value>com.wdeanmedical.portal.entity.ActivityLog</value>
             <value>com.wdeanmedical.portal.entity.Allergen</value>
             <value>com.wdeanmedical.portal.entity.Appointment</value>
             <value>com.wdeanmedical.portal.entity.AppointmentType</value>
@@ -146,6 +153,7 @@
             <value>com.wdeanmedical.portal.entity.MedicalTest</value>
             <value>com.wdeanmedical.portal.entity.MedicalTestStatus</value>
             <value>com.wdeanmedical.portal.entity.Medication</value>
+            <value>com.wdeanmedical.portal.entity.Module</value>
             <value>com.wdeanmedical.portal.entity.Patient</value>
             <value>com.wdeanmedical.portal.entity.PatientAllergen</value>
             <value>com.wdeanmedical.portal.entity.PatientClinician</value>
