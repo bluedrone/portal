@@ -91,23 +91,19 @@
   </context-param>  
   
   <context-param>
-    <param-name>pmHome</param-name>
-    <param-value>/Users/nick/workspace/pm/web/</param-value>
+    <param-name>imagesDir</param-name>
+    <param-value>images</param-value>
   </context-param> 
   
+  
   <context-param>
-    <param-name>ehrHome</param-name>
-    <param-value>/Users/nick/workspace/ehr/web/</param-value>
-  </context-param> 
+    <param-name>filesHome</param-name>
+    <param-value>/Users/nick/</param-value>
+  </context-param>  
   
   <context-param>
     <param-name>patientDirPath</param-name>
-    <param-value>files/patients</param-value>
-  </context-param> 
-  
-  <context-param>
-    <param-name>imagesDir</param-name>
-    <param-value>images</param-value>
+    <param-value>wdm_files/patients</param-value>
   </context-param> 
   
   <!-- Spring Servlet Configuration -->

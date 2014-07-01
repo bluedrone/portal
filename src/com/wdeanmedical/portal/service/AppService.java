@@ -458,7 +458,8 @@ public class AppService {
     
     is = request.getInputStream();
     String filename = request.getHeader("X-File-Name");
-    fos = new FileOutputStream(new File(Core.appBaseDir + Core.imagesDir + "/" + filename));
+    String filesHomePatientDirPath =  Core.filesHome  + Core.patientDirPath + "/" + patientId + "/";
+    fos = new FileOutputStream(new File(filesHomePatientDirPath + filename));
     IOUtils.copy(is, fos);
     response.setStatus(HttpServletResponse.SC_OK);
     fos.close();
@@ -466,10 +467,10 @@ public class AppService {
    
     String[] imageMagickArgs = {
       Core.imageMagickHome + "convert", 
-      Core.appBaseDir + Core.imagesDir + "/" + filename, 
+     filesHomePatientDirPath + filename, 
       "-resize", 
       "160x160", 
-      Core.appBaseDir + Core.imagesDir + "/" + filename
+      filesHomePatientDirPath + filename
     };
     Runtime runtime = Runtime.getRuntime();
     Process process = runtime.exec(imageMagickArgs);
@@ -485,26 +486,6 @@ public class AppService {
     }
     log.info("\n" + filename + " uploaded");
     
-    String pmPatientDirPath =  Core.pmHome  + Core.patientDirPath + "/" + patientId + "/";
-    String ehrPatientDirPath =  Core.ehrHome  + Core.patientDirPath + "/" + patientId + "/";
-    String portalPatientDirPath =  Core.appBaseDir + Core.patientDirPath + "/" + patientId + "/";
-    
-    new File(portalPatientDirPath).mkdir();
-    new File(ehrPatientDirPath).mkdir();
-    new File(pmPatientDirPath).mkdir();
-    
-    String profileImageTempPath = Core.appBaseDir + Core.imagesDir + "/" + filename;
-    
-    String[] cpArgsPortal = {"cp", profileImageTempPath,  portalPatientDirPath};
-    runtime.exec(cpArgsPortal);
-    
-    String[] cpArgsEHR = {"cp", profileImageTempPath,  ehrPatientDirPath};
-    runtime.exec(cpArgsEHR);
-    
-    new File(pmPatientDirPath).mkdir();
-    String[] mvArgs = {"mv", profileImageTempPath,  pmPatientDirPath};
-    runtime.exec(mvArgs);
-
     Patient patient = appDAO.findPatientById(new Integer(patientId));    
     appDAO.updatePatientProfileImage(patient, filename); 
    
@@ -512,6 +493,7 @@ public class AppService {
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "UploadProfileImage");
     return returnString;
   }
+  
   
   
   public String generatePassword() {

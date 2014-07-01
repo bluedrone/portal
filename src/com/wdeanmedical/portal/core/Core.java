@@ -33,10 +33,9 @@ public class Core {
   public static int sessionTimeout;
   public static String imagesDir;
   public static String imageMagickHome;
+  public static String filesHome;  
   public static String appBaseDir;
   public static String patientDirPath;
-  public static String ehrHome;
-  public static String pmHome;
   public static Map<String, PatientSessionData> patientSessionMap = Collections.synchronizedMap(new TreeMap<String, PatientSessionData>());
   public static Map<String, boolean[]> patientPermissionsMap = new TreeMap<String, boolean[]>();
   

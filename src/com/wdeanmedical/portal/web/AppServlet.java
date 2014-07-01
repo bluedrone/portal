@@ -70,10 +70,9 @@ public class AppServlet extends HttpServlet  {
     Core.sessionTimeout = Integer.parseInt(context.getInitParameter("appSessionTimeout"));
     Core.mailAuthenticationUser = context.getInitParameter("mailAuthenticationUser");
     Core.mailAuthenticationPassword = context.getInitParameter("mailAuthenticationPassword");
+    Core.filesHome = context.getInitParameter("filesHome");
     Core.patientDirPath = context.getInitParameter("patientDirPath");
     Core.imagesDir = context.getInitParameter("imagesDir");
-    Core.ehrHome = context.getInitParameter("ehrHome");
-    Core.pmHome = context.getInitParameter("portalHome");
     Core.buildPatientPermissionsMap();
     try{
       appService = new AppService();
