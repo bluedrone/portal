@@ -9,9 +9,11 @@ package com.wdeanmedical.portal.service;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -556,6 +558,28 @@ public class AppService {
     BooleanResultDTO booleanResultDTO = new BooleanResultDTO();
     booleanResultDTO.setResult(appDAO.checkEmail(loginDTO.getEmail()));
     return booleanResultDTO;
+  }
+  
+  
+  public void getFile(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext, 
+                      String filePath, String fileName) throws Exception {
+    String mime = servletContext.getMimeType(fileName);
+    if (mime == null) {
+      response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+      return;
+    }
+    response.setContentType(mime);  
+    File file = new File(filePath + fileName);
+    response.setContentLength((int) file.length());
+    FileInputStream in = new FileInputStream(file);
+    OutputStream out = response.getOutputStream();
+    byte[] buf = new byte[1024];
+    int count = 0;
+    while ((count = in.read(buf)) >= 0) {
+      out.write(buf, 0, count);
+    }
+    out.close();
+    in.close();
   }
 
 }

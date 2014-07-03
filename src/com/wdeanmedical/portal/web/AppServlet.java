@@ -126,6 +126,9 @@ public class AppServlet extends HttpServlet  {
           else if (pathInfo.equals("/getPatientProcedures")) {
             returnString = getPatientProcedures(request, response);  
           }
+          else if (pathInfo.equals("/getPatientProfileImage")) {
+            returnString = getPatientProfileImage(request, response);  
+          }
           else if (pathInfo.equals("/getPatientHealthTrendReports")) {
             returnString = getPatientHealthTrendReports(request, response);  
           }
@@ -538,6 +541,19 @@ public class AppServlet extends HttpServlet  {
   
    public String getStaticLists(HttpServletRequest request, HttpServletResponse response) throws Exception {
     String json = appService.getStaticLists(); 
+    return json;
+  }
+  
+    
+  public String getPatientProfileImage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    String data = request.getParameter("data");
+    String profileImagePath = request.getParameter("profileImagePath"); 
+    Gson gson = new Gson();
+    String patientId = request.getParameter("patientId");
+    PatientDTO dto = gson.fromJson(data, PatientDTO.class); 
+    String filesHomePatientDirPath =  Core.filesHome  + Core.patientDirPath + "/" + patientId + "/";
+	appService.getFile(request, response, getServletContext(), filesHomePatientDirPath, profileImagePath);  
+    String json = gson.toJson(dto);
     return json;
   }
   

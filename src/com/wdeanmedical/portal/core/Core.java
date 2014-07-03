@@ -49,6 +49,7 @@ public class Core {
     patientPermissionsMap.put("/getPatientMedicalTests",           new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientVitalSigns",             new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientDMData",                 new boolean[] {true ,true});
+    patientPermissionsMap.put("getPatientProfileImage",            new boolean[] {true,true});
     patientPermissionsMap.put("/getPatientLipids",                 new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientVitalSigns",             new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientProcedures",             new boolean[] {true ,true});
