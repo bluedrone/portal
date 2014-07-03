@@ -104,7 +104,7 @@ function newUserScreen() {
   
   setupPictureUpload();
   app_currentUsername = patient.cred.email;
-  $("#new-patient-photo").attr("src", 'app/getPatientProfileImage?sessionId=' + patient.sessionId + "&patientId=" + patient.id  + "&profileImagePath=" + patient.demo.profileImagePath;
+  $("#new-patient-photo").attr("src", 'app/getPatientProfileImage?sessionId=' + patient.sessionId + "&patientId=" + patient.id  + "&profileImagePath=" + patient.demo.profileImagePath);
   $('#new-patient-last-name').val(patient.cred.firstName);
   $('#new-patient-first-name').val(patient.cred.lastName);
   $('#new-patient-middle-initial').val(patient.cred.middleName);
