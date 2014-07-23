@@ -237,4 +237,30 @@ td.highlighted { background:#FFFF66 }
   margin-right: 10px;
 }
 
+.app-calendar {
+  text-align: center;
+  font-size: 14px;
+  font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  width: auto;
+  margin: 0px;
+}
+
+
+.panel-top {
+  padding: 5px 0px 5px 10px;
+  margin-top: 3px;
+  background-color: #2a6496;
+  color: #fff;
+  font-size: 1.15em;
+  border: 1px solid transparent;
+  border-radius: 8px 8px 0px 0px;
+}
+.panel-bottom {
+  display: block;
+  background-color: #2a6496;
+  color: #fff;
+  padding: 15px 10px 15px 10px;
+  border: 1px solid transparent;
+  border-radius: 0px 0px 8px 8px;
+}
 

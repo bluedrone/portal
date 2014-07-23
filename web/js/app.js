@@ -54,6 +54,7 @@ var patientMessages;
 var pastAppointments;
 var upcomingAppointments;
 var patientClinicians;
+var app_currentCalendarView = 'month';
 
 var patient = new Patient();
 
@@ -194,6 +195,7 @@ function messagesScreen() {
 
 function appointmentsScreen() {
   app_viewStack('appointments-screen', DO_SCROLL);
+  app_loadCalendar();
 }
 
 function sendMessageScreen() {

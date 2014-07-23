@@ -10,7 +10,7 @@ function app_loadCalendar() {
     type: "GET",
     contentType: "application/json",
     data:"{}",
-    url: "app/getAppointments?sessionId="+user.sessionId,
+    url: "app/getAppointments?sessionId="+patient.cred.sessionId,
     dataType: "json",
     success: function(data) {
       $('#app-calendar').fullCalendar('destroy');
@@ -113,7 +113,7 @@ function newApptForm(start, end) {
       var startTimeString = dateFormat(start, 'mm/dd/yyyy') + ' 9:00 AM';
   
       var jsonData = JSON.stringify({ 
-        sessionId: user.sessionId,
+        sessionId: patient.cred.sessionId,
         startTime: startTimeString,
         apptLengthInMinutes: 30
       });
@@ -152,7 +152,7 @@ function deleteApptConfirm(e, id) {
     $('#modals-placement').append(s);
     $('#modal-confirm').modal('show'); 
     $('#app-modal-confirmation-btn').click(function(){  
-      var jsonData = JSON.stringify({ sessionId: user.sessionId, id:id });
+      var jsonData = JSON.stringify({ sessionId: patient.cred.sessionId, id:id });
       $.post("app/deleteAppt", {data:jsonData}, function(data) {
         $('#modal-confirm').modal('hide'); 
         $('#modal-event').modal('hide');
@@ -186,7 +186,7 @@ function editApptForm(calEvent) {
     $('#app-appt-desc').val(calEvent.desc);
     
     var jsonData = JSON.stringify({ 
-      sessionId: user.sessionId,
+      sessionId: patient.cred.sessionId,
       id: calEvent.id
     });
   
@@ -221,7 +221,7 @@ function moveAppt(event, jsEvent, ui, view) {
   var endTimeString = dateFormat(end, 'mm/dd/yyyy') + " " + dateFormat(end, 'h:MM TT');
   
   var jsonData = JSON.stringify({ 
-    sessionId: user.sessionId,
+    sessionId: patient.cred.sessionId,
     startTime: startTimeString,
     endTime: endTimeString,
     id: event.id
@@ -246,7 +246,7 @@ function resizeAppt(event, jsEvent, ui, view) {
   var endTimeString = dateFormat(end, 'mm/dd/yyyy') + " " + dateFormat(end, 'h:MM TT');
   
   var jsonData = JSON.stringify({ 
-    sessionId: user.sessionId,
+    sessionId: patient.cred.sessionId,
     startTime: startTimeString,
     endTime: endTimeString,
     id: event.id
@@ -282,7 +282,7 @@ function handleUpdateAppt(e, start, end, id) {
   var endTimeString = dateFormat(end, 'mm/dd/yyyy') + " " + $('#app-appt-end').val();
   
   var jsonData = JSON.stringify({ 
-    sessionId: user.sessionId,
+    sessionId: patient.cred.sessionId,
     id: id,
     startTime: startTimeString,
     endTime: endTimeString,
@@ -330,7 +330,7 @@ function handleNewAppt(e, start, end) {
   var endTime = moment (endTimeString, "mm/dd/yyyy HH:mm A");
   
   var jsonData = JSON.stringify({ 
-    sessionId: user.sessionId,
+    sessionId: patient.cred.sessionId,
     startTime: startTimeString,
     endTime: endTimeString,
     clinician: $('#app-appt-clinician').val(), 

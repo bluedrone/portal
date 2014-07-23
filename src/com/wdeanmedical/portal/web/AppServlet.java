@@ -3,8 +3,11 @@ package com.wdeanmedical.portal.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wdeanmedical.portal.dto.AppointmentDTO;
 import com.wdeanmedical.portal.core.Core;
 import com.wdeanmedical.portal.dto.AuthorizedDTO;
 import com.wdeanmedical.portal.dto.ContactMessageDTO;
@@ -185,6 +189,12 @@ public class AppServlet extends HttpServlet  {
           }
           else if (pathInfo.equals("/uploadProfileImage")) {
             returnString = uploadProfileImage(request, response);  
+          }
+          else if (pathInfo.equals("/getAppointment")) {
+            returnString = getAppointment(request, response);  
+          }
+          else if (pathInfo.equals("/getAppointments")) {
+            returnString = getAppointments(request, response);  
           }
         }
       }
@@ -553,6 +563,51 @@ public class AppServlet extends HttpServlet  {
     PatientDTO dto = gson.fromJson(data, PatientDTO.class); 
     String filesHomePatientDirPath =  Core.filesHome  + Core.patientDirPath + "/" + patientId + "/";
 	appService.getFile(request, response, getServletContext(), filesHomePatientDirPath, profileImagePath);  
+    String json = gson.toJson(dto);
+    return json;
+  }
+  
+  
+  
+  public String getAppointments(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    Gson gson = new Gson();
+    List<Appointment> bookedAppts = null;
+    bookedAppts = appService.getAllAppointments();
+        
+    ArrayList<Map<String, Object>> visitsList = new ArrayList<Map<String, Object>>();
+    Map<String, Object> visitInstance = null;
+    if(bookedAppts != null) {
+      for(Appointment event : bookedAppts) {
+        visitInstance = new HashMap<String, Object>();
+        visitInstance.put("id", event.getId());
+        visitInstance.put("title", event.getTitle());
+        visitInstance.put("start", formatDate(event.getStartTime()));
+        visitInstance.put("end", formatDate(event.getEndTime()));
+        visitInstance.put("desc", event.getDesc());
+        visitInstance.put("allDay", Boolean.FALSE);
+        visitsList.add(visitInstance);
+      }
+    }
+    return gson.toJson(visitsList);
+  }
+  
+  
+  
+  public static String formatDate(Date date){
+    String value = null;
+    if (date != null){
+      SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      value = dateformat.format(date);
+    }
+    return value;
+  }
+  
+  
+  public String getAppointment(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    String data = request.getParameter("data");
+    Gson gson = new Gson();
+    AppointmentDTO dto = gson.fromJson(data, AppointmentDTO.class); 
+    boolean result = appService.getAppointment(dto);
     String json = gson.toJson(dto);
     return json;
   }

@@ -31,6 +31,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wdeanmedical.portal.dto.AppointmentDTO;
 import com.wdeanmedical.portal.service.ActivityLogService;
 import com.wdeanmedical.portal.core.Core;
 import com.wdeanmedical.portal.dto.AuthorizedDTO;
@@ -580,6 +581,19 @@ public class AppService {
     }
     out.close();
     in.close();
+  }
+  
+  
+  public List<Appointment> getAllAppointments() throws Exception {
+    return appDAO.getAllAppointments();
+  }
+  
+  
+  
+  public boolean getAppointment(AppointmentDTO dto) throws Exception {
+    Appointment appointment = appDAO.findAppointmentById(dto.getId());
+    dto.setAppointment(appointment);
+    return true;
   }
 
 }

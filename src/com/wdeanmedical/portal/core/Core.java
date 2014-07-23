@@ -41,6 +41,8 @@ public class Core {
   
   public static void buildPatientPermissionsMap() {
     patientPermissionsMap.put("/logout",                           new boolean[] {true ,true});
+    patientPermissionsMap.put("/getAppointment",                   new boolean[] {true ,true});
+    patientPermissionsMap.put("/getAppointments",                  new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientAllergens",              new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientMedications",            new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientImmunizations",          new boolean[] {true ,true});
