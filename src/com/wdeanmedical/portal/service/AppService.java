@@ -590,10 +590,21 @@ public class AppService {
   
   
   
+  public List<Appointment> getAllAppointmentsByPatient(Patient patient) throws Exception {
+    return appDAO.getAllAppointmentsByPatient(patient);
+  }
+  
+  
+  
   public boolean getAppointment(AppointmentDTO dto) throws Exception {
     Appointment appointment = appDAO.findAppointmentById(dto.getId());
     dto.setAppointment(appointment);
     return true;
+  }
+  
+  
+  public Patient getPatientBySessionId(String sessionId) throws Exception {
+    return appDAO.findPatientBySessionId(sessionId);
   }
 
 }

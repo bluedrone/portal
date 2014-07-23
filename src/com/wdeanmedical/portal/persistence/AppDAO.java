@@ -469,8 +469,19 @@ public class AppDAO extends SiteDAO {
   }
   
   
+  
   public List<Appointment> getAllAppointments() throws Exception {
     return this.findAll(Appointment.class);
+  }
+  
+  
+  
+  public List<Appointment> getAllAppointmentsByPatient(Patient patient) throws Exception {
+    Session session = this.getSession();
+    Criteria crit = session.createCriteria(Appointment.class);
+    crit.add(Restrictions.eq("patient", patient));
+    List<Appointment> list =  crit.list();
+    return list;
   }
   
   

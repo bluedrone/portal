@@ -196,6 +196,9 @@ public class AppServlet extends HttpServlet  {
           else if (pathInfo.equals("/getAppointments")) {
             returnString = getAppointments(request, response);  
           }
+          else if (pathInfo.equals("/getAppointmentsByPatient")) {
+            returnString = getAppointmentsByPatient(request, response);  
+          }
         }
       }
       
@@ -565,6 +568,31 @@ public class AppServlet extends HttpServlet  {
 	appService.getFile(request, response, getServletContext(), filesHomePatientDirPath, profileImagePath);  
     String json = gson.toJson(dto);
     return json;
+  }
+  
+  
+  
+  public String getAppointmentsByPatient(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    Gson gson = new Gson();
+    List<Appointment> bookedAppts = null;
+    Patient patient = appService.getPatientBySessionId(request.getParameter("sessionId"));
+    bookedAppts = appService.getAllAppointmentsByPatient(patient);
+        
+    ArrayList<Map<String, Object>> visitsList = new ArrayList<Map<String, Object>>();
+    Map<String, Object> visitInstance = null;
+    if(bookedAppts != null) {
+      for(Appointment event : bookedAppts) {
+        visitInstance = new HashMap<String, Object>();
+        visitInstance.put("id", event.getId());
+        visitInstance.put("title", event.getTitle());
+        visitInstance.put("start", formatDate(event.getStartTime()));
+        visitInstance.put("end", formatDate(event.getEndTime()));
+        visitInstance.put("desc", event.getDesc());
+        visitInstance.put("allDay", Boolean.FALSE);
+        visitsList.add(visitInstance);
+      }
+    }
+    return gson.toJson(visitsList);
   }
   
   
