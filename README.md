@@ -1,8 +1,8 @@
 # WDean Medical Patient and Family Portal
-# version 0.9.13  03-JUL-2014
+# version 0.9.14  23-JUL-2014
 
 Improvements:
-Common and secure file location for all 3 applications in the suite.
+Appointment rendering working.
 
 Bug Fixes:
 

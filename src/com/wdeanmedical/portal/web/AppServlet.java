@@ -31,6 +31,7 @@ import com.wdeanmedical.portal.dto.MessageDTO;
 import com.wdeanmedical.portal.dto.PatientDTO;
 import com.wdeanmedical.portal.dto.SiteDTO;
 import com.wdeanmedical.portal.entity.Appointment;
+import com.wdeanmedical.portal.entity.Clinician;
 import com.wdeanmedical.portal.entity.Patient;
 import com.wdeanmedical.portal.entity.PatientAllergen;
 import com.wdeanmedical.portal.entity.PatientClinician;
@@ -584,7 +585,8 @@ public class AppServlet extends HttpServlet  {
       for(Appointment event : bookedAppts) {
         visitInstance = new HashMap<String, Object>();
         visitInstance.put("id", event.getId());
-        visitInstance.put("title", event.getTitle());
+        Clinician clinician = event.getClinician();
+        visitInstance.put("title", clinician.getFirstName() + " " + clinician.getLastName());
         visitInstance.put("start", formatDate(event.getStartTime()));
         visitInstance.put("end", formatDate(event.getEndTime()));
         visitInstance.put("desc", event.getDesc());
