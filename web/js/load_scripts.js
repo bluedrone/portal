@@ -16,7 +16,6 @@ head.js (
    "js/lib/backbone-min.js",
    "js/lib/bootstrap.min.js",           
    "js/lib/bootstrap-datepicker.js",           
-   "js/lib/bootstrap-timepicker.min.js",
    "js/lib/fileuploader.custom.js",           
    "js/dto.js",           
    "js/calendar.js",           
