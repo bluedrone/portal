@@ -62,7 +62,7 @@ import com.wdeanmedical.portal.entity.PatientMedication;
 import com.wdeanmedical.portal.entity.PatientMessage;
 import com.wdeanmedical.portal.entity.PatientMessageType;
 import com.wdeanmedical.portal.entity.PatientSession;
-import com.wdeanmedical.portal.entity.PatientVitalSigns;
+import com.wdeanmedical.portal.entity.VitalSigns;
 import com.wdeanmedical.portal.persistence.AppDAO;
 import com.wdeanmedical.portal.util.MailHandler;
 import com.wdeanmedical.portal.util.OneWayPasswordEncoder;
@@ -107,7 +107,7 @@ public class AppService {
     return appDAO.getPatientAllergens(patient);
   }
   
-  public List<PatientVitalSigns> getPatientVitalSigns(PatientDTO dto) throws Exception {
+  public List<VitalSigns> getPatientVitalSigns(PatientDTO dto) throws Exception {
     Patient patient = appDAO.findPatientById(dto.getId());
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientVitalSigns");
     return appDAO.getPatientVitalSigns(patient);

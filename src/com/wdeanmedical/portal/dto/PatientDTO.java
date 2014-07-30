@@ -27,7 +27,7 @@ import com.wdeanmedical.portal.entity.PatientMedicalTest;
 import com.wdeanmedical.portal.entity.PatientMedicalTestComponent;
 import com.wdeanmedical.portal.entity.PatientMedication;
 import com.wdeanmedical.portal.entity.PatientMessage;
-import com.wdeanmedical.portal.entity.PatientVitalSigns;
+import com.wdeanmedical.portal.entity.VitalSigns;
 
 public class PatientDTO extends AuthorizedDTO {
   private Patient patient;
@@ -88,7 +88,7 @@ public class PatientDTO extends AuthorizedDTO {
   private List<PatientHealthTrendReport> patientHealthTrendReports;
   private List<PatientLetter> patientLetters;
   private List<PatientMessage> patientMessages;
-  private List<PatientVitalSigns> patientVitalSigns;
+  private List<VitalSigns> vitalSigns;
   private List<PatientDMData> patientDMData;
   private List<PatientLipids> patientLipids;
   private List<PatientClinician> patientClinicians;
@@ -283,8 +283,8 @@ public class PatientDTO extends AuthorizedDTO {
   public void setPatientMedicalTestComponents( List<PatientMedicalTestComponent> patientMedicalTestComponents) {
  this.patientMedicalTestComponents = patientMedicalTestComponents; }
 
-  public List<PatientVitalSigns> getPatientVitalSigns() { return patientVitalSigns; }
-  public void setPatientVitalSigns(List<PatientVitalSigns> patientVitalSigns) { this.patientVitalSigns = patientVitalSigns; }
+  public List<VitalSigns> getVitalSigns() { return vitalSigns; }
+  public void setVitalSigns(List<VitalSigns> vitalSigns) { this.vitalSigns = vitalSigns; }
 
   public List<PatientDMData> getPatientDMData() { return patientDMData; }
   public void setPatientDMData(List<PatientDMData> patientDMData) { this.patientDMData = patientDMData; }

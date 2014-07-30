@@ -19,7 +19,6 @@ import com.wdeanmedical.portal.entity.Race;
 import com.wdeanmedical.portal.entity.MaritalStatus;
 import com.wdeanmedical.portal.entity.Gender;
 import com.wdeanmedical.portal.entity.USState;
-import com.wdeanmedical.portal.entity.PatientVitalSigns;
 import com.wdeanmedical.portal.core.Core;
 import com.wdeanmedical.portal.entity.Appointment;
 import com.wdeanmedical.portal.entity.BaseEntity;
@@ -43,6 +42,7 @@ import com.wdeanmedical.portal.entity.PatientMessage;
 import com.wdeanmedical.portal.entity.PatientMessageType;
 import com.wdeanmedical.portal.entity.PatientSession;
 import com.wdeanmedical.portal.entity.PatientStatus;
+import com.wdeanmedical.portal.entity.VitalSigns;
 import com.wdeanmedical.portal.util.OneWayPasswordEncoder;
 
 import org.apache.log4j.Logger;
@@ -176,12 +176,12 @@ public class AppDAO extends SiteDAO {
   }
   
   
-  public List <PatientVitalSigns> getPatientVitalSigns(Patient patient) throws Exception {
+  public List <VitalSigns> getPatientVitalSigns(Patient patient) throws Exception {
     Session session = this.getSession();
-    Criteria crit = session.createCriteria(PatientVitalSigns.class);
+    Criteria crit = session.createCriteria(VitalSigns.class);
     crit.add(Restrictions.eq("patient", patient));
     crit.addOrder(Order.desc("date"));
-    List<PatientVitalSigns> list =  crit.list();
+    List<VitalSigns> list =  crit.list();
     return list;
   }
   

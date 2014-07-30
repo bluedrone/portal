@@ -46,7 +46,7 @@ import com.wdeanmedical.portal.entity.PatientMedicalTest;
 import com.wdeanmedical.portal.entity.PatientMedication;
 import com.wdeanmedical.portal.entity.PatientMessage;
 import com.wdeanmedical.portal.entity.PatientMessageType;
-import com.wdeanmedical.portal.entity.PatientVitalSigns;
+import com.wdeanmedical.portal.entity.VitalSigns;
 import com.wdeanmedical.portal.service.AppService;
 import com.wdeanmedical.portal.util.PatientSessionData;
 import com.google.gson.Gson;
@@ -251,8 +251,8 @@ public class AppServlet extends HttpServlet  {
     String data = request.getParameter("data");
     Gson gson = new Gson();
     PatientDTO dto = gson.fromJson(data, PatientDTO.class); 
-    List<PatientVitalSigns> patientVitalSigns = appService.getPatientVitalSigns(dto); 
-    dto.setPatientVitalSigns(patientVitalSigns);
+    List<VitalSigns> patientVitalSigns = appService.getPatientVitalSigns(dto); 
+    dto.setVitalSigns(patientVitalSigns);
     String json = gson.toJson(dto);
     return json;
   }

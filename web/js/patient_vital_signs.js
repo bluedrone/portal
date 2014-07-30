@@ -14,7 +14,7 @@ function getPatientVitalSigns(id) {
       {title:'Dia', field:'diastolic', type:'simple'},
       {title:'Ox', field:'oximetry', type:'simple'}
     ];
-    patientVitalSigns = parsedData.patientVitalSigns;
+    patientVitalSigns = parsedData.vitalSigns;
     RenderUtil.render('simple_data_table', 
     {items:patientVitalSigns, 
     title:'Vital Signs', 

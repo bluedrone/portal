@@ -176,7 +176,7 @@
             <value>com.wdeanmedical.portal.entity.PatientMessageType</value>
             <value>com.wdeanmedical.portal.entity.PatientSession</value>
             <value>com.wdeanmedical.portal.entity.PatientStatus</value>
-            <value>com.wdeanmedical.portal.entity.PatientVitalSigns</value>
+            <value>com.wdeanmedical.portal.entity.VitalSigns</value>
             <value>com.wdeanmedical.portal.entity.PatientLipids</value>
             <value>com.wdeanmedical.portal.entity.PatientDMData</value>
             <value>com.wdeanmedical.portal.entity.Race</value>
