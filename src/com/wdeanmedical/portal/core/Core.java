@@ -50,7 +50,6 @@ public class Core {
     patientPermissionsMap.put("/getPatientHealthIssues",           new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientMedicalTestComponents",  new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientMedicalTests",           new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientVitalSigns",             new boolean[] {true ,true});
     patientPermissionsMap.put("/getPatientDMData",                 new boolean[] {true ,true});
     patientPermissionsMap.put("getPatientProfileImage",            new boolean[] {true,true});
     patientPermissionsMap.put("/getPatientLipids",                 new boolean[] {true ,true});
