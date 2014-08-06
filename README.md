@@ -1,9 +1,8 @@
 # WDean Medical Patient and Family Portal
-# version 0.9.15  25-JUL-2014
+# version 0.9.16  06-AUG-2014
 
 Improvements:
-Removed bootstrap-timepicker
-Inproved time input handling and validation.
+isValidSession() now accounts for the servlet name as well.
 
 Bug Fixes:
 

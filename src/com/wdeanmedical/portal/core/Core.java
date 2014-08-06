@@ -40,30 +40,30 @@ public class Core {
   public static Map<String, boolean[]> patientPermissionsMap = new TreeMap<String, boolean[]>();
   
   public static void buildPatientPermissionsMap() {
-    patientPermissionsMap.put("/logout",                           new boolean[] {true ,true});
-    patientPermissionsMap.put("/getAppointment",                   new boolean[] {true ,true});
-    patientPermissionsMap.put("/getAppointments",                  new boolean[] {true ,true});
-    patientPermissionsMap.put("/getAppointmentsByPatient",         new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientAllergens",              new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientMedications",            new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientImmunizations",          new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientHealthIssues",           new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientMedicalTestComponents",  new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientMedicalTests",           new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientDMData",                 new boolean[] {true ,true});
-    patientPermissionsMap.put("getPatientProfileImage",            new boolean[] {true,true});
-    patientPermissionsMap.put("/getPatientLipids",                 new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientVitalSigns",             new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientProcedures",             new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientHealthTrendReports",     new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientLetters",                new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPatientMessages",               new boolean[] {true ,true});
-    patientPermissionsMap.put("/getPastAppointments",              new boolean[] {true ,true});
-    patientPermissionsMap.put("/getUpcomingAppointments",          new boolean[] {true ,true});
-    patientPermissionsMap.put("/requestRxRenewal",                 new boolean[] {true ,true});
-    patientPermissionsMap.put("/requestAppointment",               new boolean[] {true ,true});
-    patientPermissionsMap.put("/saveNewPatient",                   new boolean[] {true ,true});
-    patientPermissionsMap.put("/uploadProfileImage",               new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getAppointment",                   new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getAppointments",                  new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getAppointmentsByPatient",         new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPastAppointments",              new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientAllergens",              new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientImmunizations",          new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientDMData",                 new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientHealthIssues",           new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientHealthTrendReports",     new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientLetters",                new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientLipids",                 new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientMedications",            new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientMedicalTestComponents",  new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientMedicalTests",           new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientMessages",               new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientProcedures",             new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getPatientProfileImage",           new boolean[] {true,true});
+    patientPermissionsMap.put("/app/getPatientVitalSigns",             new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/getUpcomingAppointments",          new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/logout",                           new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/requestAppointment",               new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/requestRxRenewal",                 new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/saveNewPatient",                   new boolean[] {true ,true});
+    patientPermissionsMap.put("/app/uploadProfileImage",               new boolean[] {true ,true});
  }
   
 
