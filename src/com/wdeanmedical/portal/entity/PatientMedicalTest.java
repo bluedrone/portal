@@ -19,6 +19,7 @@ public class PatientMedicalTest extends BaseEntity implements Serializable {
   private static final long serialVersionUID = -1122130358806883720L;
   private Integer patientId;
   private Integer clinicianId;
+  private Clinician clinician;
   private MedicalTest medicalTest;
   private MedicalTestStatus status;
   private Date date;
@@ -33,6 +34,11 @@ public class PatientMedicalTest extends BaseEntity implements Serializable {
   @Column(name = "clinician_id")
   public Integer getClinicianId() { return clinicianId; }
   public void setClinicianId(Integer clinicianId) { this.clinicianId = clinicianId; }
+  
+  @JoinColumn(name = "clinician", referencedColumnName = "id")
+  @ManyToOne(optional = false)
+  public Clinician getClinician() { return clinician; }
+  public void setClinician(Clinician clinician) { this.clinician = clinician; }
   
   @JoinColumn(name = "medical_test", referencedColumnName = "id")
   @ManyToOne(optional = false)
