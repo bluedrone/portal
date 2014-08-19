@@ -96,50 +96,50 @@ public class AppDAO extends SiteDAO {
     return list;
   }
   
-  public List<PatientMedication> getPatientMedications(Patient patient) throws Exception {
+  public List<PatientMedication> getPatientMedications(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(PatientMedication.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     List<PatientMedication> list =  crit.list();
     return list;
   }
   
-  public List<PatientImmunization> getPatientImmunizations(Patient patient) throws Exception {
+  public List<PatientImmunization> getPatientImmunizations(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(PatientImmunization.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     List<PatientImmunization> list =  crit.list();
     return list;
   }
   
-  public List<PatientHealthIssue> getPatientHealthIssues(Patient patient) throws Exception {
+  public List<PatientHealthIssue> getPatientHealthIssues(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(PatientHealthIssue.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     List<PatientHealthIssue> list =  crit.list();
     return list;
   }
   
-  public List<PatientMedicalTest> getPatientMedicalTests(Patient patient) throws Exception {
+  public List<PatientMedicalTest> getPatientMedicalTests(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(PatientMedicalTest.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     List<PatientMedicalTest> list =  crit.list();
     return list;
   }
   
-  public List<PatientMedicalProcedure> getPatientMedicalProcedures(Patient patient) throws Exception {
+  public List<PatientMedicalProcedure> getPatientMedicalProcedures(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(PatientMedicalProcedure.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     List<PatientMedicalProcedure> list =  crit.list();
     return list;
   }
   
-  public List<PatientHealthTrendReport> getPatientHealthTrendReports(Patient patient) throws Exception {
+  public List<PatientHealthTrendReport> getPatientHealthTrendReports(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(PatientHealthTrendReport.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     List<PatientHealthTrendReport> list =  crit.list();
     return list;
   }
@@ -176,28 +176,28 @@ public class AppDAO extends SiteDAO {
   }
   
   
-  public List <VitalSigns> getPatientVitalSigns(Patient patient) throws Exception {
+  public List <VitalSigns> getPatientVitalSigns(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(VitalSigns.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     crit.addOrder(Order.desc("date"));
     List<VitalSigns> list =  crit.list();
     return list;
   }
   
-  public List <PatientDMData> getPatientDMData(Patient patient) throws Exception {
+  public List <PatientDMData> getPatientDMData(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(PatientDMData.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     crit.addOrder(Order.desc("date"));
     List<PatientDMData> list =  crit.list();
     return list;
   }
   
-  public List <PatientLipids> getPatientLipids(Patient patient) throws Exception {
+  public List <PatientLipids> getPatientLipids(Integer patientId) throws Exception {
     Session session = this.getSession();
     Criteria crit = session.createCriteria(PatientLipids.class);
-    crit.add(Restrictions.eq("patient", patient));
+    crit.add(Restrictions.eq("patientId", patientId));
     crit.addOrder(Order.desc("date"));
     List<PatientLipids> list =  crit.list();
     return list;
@@ -244,7 +244,7 @@ public class AppDAO extends SiteDAO {
     return list;
   }
   
-  public PatientMessage findPatientMessageById(int id, int patientId) throws Exception {
+  public PatientMessage findPatientMessageById(int id) throws Exception {
     PatientMessage patientMessage = (PatientMessage) this.findById(PatientMessage.class, id);
     if (patientMessage.getFromClinician() == true) {
       patientMessage.setReadByRecipient(true);

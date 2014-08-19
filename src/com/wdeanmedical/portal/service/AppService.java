@@ -31,9 +31,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wdeanmedical.portal.util.DataEncryptor;
 import com.wdeanmedical.portal.dto.AppointmentDTO;
 import com.wdeanmedical.portal.service.ActivityLogService;
 import com.wdeanmedical.portal.core.Core;
+import com.wdeanmedical.portal.core.Permissions;
 import com.wdeanmedical.portal.dto.AuthorizedDTO;
 import com.wdeanmedical.portal.dto.BooleanResultDTO;
 import com.wdeanmedical.portal.dto.ContactMessageDTO;
@@ -108,79 +110,86 @@ public class AppService {
   }
   
   public List<VitalSigns> getPatientVitalSigns(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientVitalSigns");
-    return appDAO.getPatientVitalSigns(patient);
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientVitalSigns");
+    return appDAO.getPatientVitalSigns(patientId);
   }
   
   public List<PatientDMData> getPatientDMData(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientDMData");
-    return appDAO.getPatientDMData(patient);
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientDMData");
+    return appDAO.getPatientDMData(patientId);
   }
   
   public List<PatientLipids> getPatientLipids(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientLipids");
-    return appDAO.getPatientLipids(patient);
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientLipids");
+    return appDAO.getPatientLipids(patientId);
   }
   
-  public  List<PatientMedication> getPatientMedications(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientMedications");
-    return appDAO.getPatientMedications(patient);
+  public List<PatientMedication> getPatientMedications(PatientDTO dto) throws Exception {
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientMedications");
+    return appDAO.getPatientMedications(patientId);
   }
   
-  public  List<PatientImmunization> getPatientImmunizations(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientImmunizations");
-    return appDAO.getPatientImmunizations(patient);
+  public List<PatientImmunization> getPatientImmunizations(PatientDTO dto) throws Exception {
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientImmunizations");
+    return appDAO.getPatientImmunizations(patientId);
   }
   
-  public  List<PatientHealthIssue> getPatientHealthIssues(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientHealthIssues");
-    return appDAO.getPatientHealthIssues(patient);
+  public List<PatientHealthIssue> getPatientHealthIssues(PatientDTO dto) throws Exception {
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientHealthIssues");
+    return appDAO.getPatientHealthIssues(patientId);
   }
   
-  public  List<PatientMedicalTest> getPatientMedicalTests(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientMedicalTests");
-    return appDAO.getPatientMedicalTests(patient);
+  public List<PatientMedicalTest> getPatientMedicalTests(PatientDTO dto) throws Exception {
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientMedicalTests");
+    return appDAO.getPatientMedicalTests(patientId);
   }
   
-  public  List<PatientMedicalProcedure> getPatientMedicalProcedures(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientMedicalProcedures");
-    return appDAO.getPatientMedicalProcedures(patient);
+  public List<PatientMedicalProcedure> getPatientMedicalProcedures(PatientDTO dto) throws Exception {
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientMedicalProcedures");
+    return appDAO.getPatientMedicalProcedures(patientId);
   }
   
-  public  List<PatientHealthTrendReport> getPatientHealthTrendReports(PatientDTO dto) throws Exception {
-    Patient patient = appDAO.findPatientById(dto.getId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientHealthTrendReports");
-    return appDAO.getPatientHealthTrendReports(patient);
+  public List<PatientHealthTrendReport> getPatientHealthTrendReports(PatientDTO dto) throws Exception {
+    Integer patientId = dto.getId();
+    activityLogService.logViewPatient(patientId, null, patientId, "GetPatientHealthTrendReports");
+    return appDAO.getPatientHealthTrendReports(patientId);
   }
   
-  public  List<PatientLetter> getPatientLetters(PatientDTO dto) throws Exception {
+  public List<PatientLetter> getPatientLetters(PatientDTO dto) throws Exception {
     Patient patient = appDAO.findPatientById(dto.getId());
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientLetters");
-    return appDAO.getPatientLetters(patient);
+    List<PatientLetter> letters = appDAO.getPatientLetters(patient);
+    for (PatientLetter pl : letters) { decrypt(pl.getPatient()); }
+    return letters;
   }
   
   public  List<PatientMessage> getPatientMessages(PatientDTO dto, Boolean fromClinician) throws Exception {
     Patient patient = appDAO.findPatientById(dto.getId());
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientMessages");
-    return appDAO.getPatientMessages(patient, fromClinician);
+    List<PatientMessage> messages = appDAO.getPatientMessages(patient, fromClinician);
+    for (PatientMessage pm : messages) { decrypt(pm.getPatient()); }
+    return messages;
   }
   
-  public  List<Appointment> getAppointments(PatientDTO dto, boolean isPast) throws Exception {
+  public List<Appointment> getAppointments(PatientDTO dto, boolean isPast) throws Exception {
     Patient patient = appDAO.findPatientById(dto.getId());
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetAppointments");
-    return appDAO.getAppointments(patient, isPast);
+    List<Appointment> appointments = appDAO.getAppointments(patient, isPast);
+    for (Appointment a : appointments) { decrypt(a.getPatient()); }
+    return appointments;
   }
   
   public String buildAppointmentMessage(MessageDTO dto) throws Exception {
     Patient patient = appDAO.findPatientById(dto.getPatientId());
+    decrypt(patient);
     String message = "Appointment Request from: ";
     message += patient.getCred().getFirstName() + " " + patient.getCred().getMiddleName() + " " + patient.getCred().getLastName() + "\n";
     message += "Visit Reason: " + dto.getVisitReason() + "\n"; 
@@ -213,8 +222,7 @@ public class AppService {
     message.setFromClinician(false);
     message.setPatientMessageType(appDAO.findPatientMessageTypeById(messageTypeId));
     appDAO.create(message);
-    Patient patient = appDAO.findPatientBySessionId(dto.getSessionId());
-    activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "ProcessMessage");
+    activityLogService.logViewPatient(dto.getPatientId(), null, dto.getPatientId(), "ProcessMessage");
     return true;
   }
   
@@ -227,7 +235,7 @@ public class AppService {
   
   public boolean getPatientMessage(MessageDTO dto) throws Exception {
     Patient patient = appDAO.findPatientBySessionId(dto.getSessionId());
-    PatientMessage patientMessage = appDAO.findPatientMessageById(dto.getId(), patient.getId());
+    PatientMessage patientMessage = appDAO.findPatientMessageById(dto.getId());
     dto.setContent(patientMessage.getContent());
     dto.setFromClinician(patientMessage.getFromClinician());
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientMedicalTestComponents");
@@ -248,14 +256,9 @@ public class AppService {
     String from = Core.mailFrom;
     String name = dto.getName();
     String subject = "Contact Message From: " + name;
-    String email = dto.getEmail();
-    String phone = dto.getPhone();
     String comment = dto.getComments();
   
   
-    String role = "testrole";
-    String module = "Test Module";
-    String url = "http://wdeanmedical.com";
     String osinfo = System.getProperty("os.name");
     String browserinfo = request.getHeader("User-Agent");
     String title = subject;
@@ -302,7 +305,7 @@ public class AppService {
     }
     
     if(dto.isUpdateEmail()) {
-      if(appDAO.checkEmail(patient.getCred().getEmail()) == false) {
+      if(appDAO.checkEmail(DataEncryptor.encrypt(patient.getCred().getEmail())) == false) {
         dto.setResult(false);
         dto.setErrorMsg("Email already in system");
         dto.setReturnCode(RETURN_CODE_DUP_EMAIL);
@@ -322,7 +325,7 @@ public class AppService {
     demo.setRace(appDAO.findRaceById(demo.getRace().getId()));
     appDAO.update(patient.getDemo());
     appDAO.update(patient);
-    
+    decrypt(patient);
     String patientFullName = patient.getCred().getFirstName() + " " + patient.getCred().getLastName();
     String title = patientFullName + ", welcome to the Pleasantville Medical Patient Portal";
     String templatePath = context.getRealPath("/WEB-INF/email_templates");
@@ -342,9 +345,9 @@ public class AppService {
   
   
   public  void logoutPatient(AuthorizedDTO dto) throws Exception {
-	  Patient patient = appDAO.findPatientBySessionId(dto.getSessionId());
-	  activityLogService.logLogout(patient.getId());
-   appDAO.deletePatientSession(dto.getSessionId());
+    Patient patient = appDAO.findPatientBySessionId(dto.getSessionId());
+    activityLogService.logLogout(patient.getId());
+    appDAO.deletePatientSession(dto.getSessionId());
   }
   
   public  List<PatientClinician> getPatientClinicians(PatientDTO dto) throws Exception {
@@ -355,11 +358,12 @@ public class AppService {
   
   
   public  Patient doLogin(LoginDTO loginDTO, String ipAddress) throws Exception {
-    Patient patient = appDAO.authenticatePatient(loginDTO.getUsername(), loginDTO.getPassword());
+    Patient patient = appDAO.authenticatePatient(DataEncryptor.encrypt(loginDTO.getUsername()), loginDTO.getPassword());
     if (patient.getCred().getAuthStatus() == Patient.STATUS_AUTHORIZED) {
       startPatientSession(patient, ipAddress, appDAO);
     }
     activityLogService.logLogin(patient.getId());
+    decrypt(patient);
     return patient;
   }
   
@@ -375,8 +379,10 @@ public class AppService {
       appDAO.update(patientSession);
       activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "ValidateFromOffice");
     }
+    decrypt(patient);
     return patient;
   }
+  
   
   
   public  Patient validateViaActivation(AuthorizedDTO authDTO, String ipAddress) throws Exception {
@@ -385,8 +391,11 @@ public class AppService {
       startPatientSession(patient, ipAddress, appDAO);
     }
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "ValidateViaActivation");
+    decrypt(patient);
     return patient;
   }
+  
+  
   
   public void startPatientSession(Patient patient, String ipAddress, AppDAO appDAO) throws Exception {
      PatientSession patientSession = new PatientSession();
@@ -428,10 +437,10 @@ public class AppService {
      // check for proper access level
     int accessLevel = patientSession.getPatient().getCred().getAccessLevel();
     log.info("======= isValidSession() checking " + path); 
-    if (Core.patientPermissionsMap.get(path) != null) {
+    if (Permissions.patientPermissionsMap.get(path) != null) {
       username = patientSession.getPatient().getCred().getUsername(); 
       log.info("======= isValidSession() checking " + path + " for user " + username + " with a permissions level of " + accessLevel); 
-      if (Core.patientPermissionsMap.get(path)[accessLevel] == false) {
+      if (Permissions.patientPermissionsMap.get(path)[accessLevel] == false) {
         log.info("======= isValidSession() user " + username + " lacks permission level to execute " + path); 
         return false;
       }
@@ -585,19 +594,24 @@ public class AppService {
   
   
   public List<Appointment> getAllAppointments() throws Exception {
-    return appDAO.getAllAppointments();
+    List<Appointment> appointments = appDAO.getAllAppointments();
+    for (Appointment a : appointments) { decrypt(a.getPatient()); }
+    return appointments;
   }
   
   
   
   public List<Appointment> getAllAppointmentsByPatient(Patient patient) throws Exception {
-    return appDAO.getAllAppointmentsByPatient(patient);
+    List<Appointment> appointments = appDAO.getAllAppointmentsByPatient(patient);
+    for (Appointment a : appointments) { decrypt(a.getPatient()); }
+    return appointments;
   }
   
   
   
   public boolean getAppointment(AppointmentDTO dto) throws Exception {
     Appointment appointment = appDAO.findAppointmentById(dto.getId());
+    decrypt(appointment.getPatient());
     dto.setAppointment(appointment);
     return true;
   }
@@ -606,5 +620,64 @@ public class AppService {
   public Patient getPatientBySessionId(String sessionId) throws Exception {
     return appDAO.findPatientBySessionId(sessionId);
   }
+  
+  
+  
+   public void encrypt(Patient patient) throws Exception { 
+     log.info("encrypt()");
+     if (patient == null || patient.isEncrypted()) {
+       return;
+     }
+     Credentials cred = patient.getCred();
+     Demographics demo = patient.getDemo();
+     if (cred.getUsername() != null) { cred.setUsername(DataEncryptor.encrypt(cred.getUsername()));}
+     if (cred.getMrn() != null) { cred.setMrn(DataEncryptor.encrypt(cred.getMrn()));}
+     if (cred.getFirstName() != null) { cred.setFirstName(DataEncryptor.encrypt(cred.getFirstName()));}
+     if (cred.getMiddleName() != null) { cred.setMiddleName(DataEncryptor.encrypt(cred.getMiddleName()));}
+     if (cred.getLastName() != null) { cred.setLastName(DataEncryptor.encrypt(cred.getLastName()));}
+     if (cred.getAdditionalName() != null) { cred.setAdditionalName(DataEncryptor.encrypt(cred.getAdditionalName()));}
+     if (cred.getEmail() != null) { cred.setEmail(DataEncryptor.encrypt(cred.getEmail()));}
+     if (cred.getGovtId() != null) { cred.setGovtId(DataEncryptor.encrypt(cred.getGovtId()));}
+     if (demo.getPrimaryPhone() != null) { demo.setPrimaryPhone(DataEncryptor.encrypt(demo.getPrimaryPhone()));}
+     if (demo.getSecondaryPhone() != null) { demo.setSecondaryPhone(DataEncryptor.encrypt(demo.getSecondaryPhone()));}
+     if (demo.getStreetAddress1() != null) { demo.setStreetAddress1(DataEncryptor.encrypt(demo.getStreetAddress1()));}
+     if (demo.getStreetAddress2() != null) { demo.setStreetAddress2(DataEncryptor.encrypt(demo.getStreetAddress2()));}
+     if (demo.getCity() != null) { demo.setCity(DataEncryptor.encrypt(demo.getCity()));}
+     if (demo.getPostalCode() != null) { demo.setPostalCode(DataEncryptor.encrypt(demo.getPostalCode()));}
+     if (demo.getEmployer() != null) { demo.setEmployer(DataEncryptor.encrypt(demo.getEmployer()));}
+     if (demo.getSchoolName() != null) { demo.setSchoolName(DataEncryptor.encrypt(demo.getSchoolName()));}
+     patient.setCred(cred);
+     patient.setDemo(demo);
+     patient.setEncrypted(true);
+   }
+   
+   
+   public void decrypt(Patient patient) throws Exception { 
+     log.info("decrypt()");
+     if (patient == null || patient.isEncrypted() == false) {
+       return;
+     }
+     Credentials cred = patient.getCred();
+     Demographics demo = patient.getDemo();
+     if (cred.getUsername() != null) { cred.setUsername(DataEncryptor.decrypt(cred.getUsername()));}
+     if (cred.getMrn() != null) { cred.setMrn(DataEncryptor.decrypt(cred.getMrn()));}
+     if (cred.getFirstName() != null) { cred.setFirstName(DataEncryptor.decrypt(cred.getFirstName()));}
+     if (cred.getMiddleName() != null) { cred.setMiddleName(DataEncryptor.decrypt(cred.getMiddleName()));}
+     if (cred.getLastName() != null) { cred.setLastName(DataEncryptor.decrypt(cred.getLastName()));}
+     if (cred.getAdditionalName() != null) { cred.setAdditionalName(DataEncryptor.decrypt(cred.getAdditionalName()));}
+     if (cred.getEmail() != null) { cred.setEmail(DataEncryptor.decrypt(cred.getEmail()));}
+     if (cred.getGovtId() != null) { cred.setGovtId(DataEncryptor.decrypt(cred.getGovtId()));}
+     if (demo.getPrimaryPhone() != null) { demo.setPrimaryPhone(DataEncryptor.decrypt(demo.getPrimaryPhone()));}
+     if (demo.getSecondaryPhone() != null) { demo.setSecondaryPhone(DataEncryptor.decrypt(demo.getSecondaryPhone()));}
+     if (demo.getStreetAddress1() != null) { demo.setStreetAddress1(DataEncryptor.decrypt(demo.getStreetAddress1()));}
+     if (demo.getStreetAddress2() != null) { demo.setStreetAddress2(DataEncryptor.decrypt(demo.getStreetAddress2()));}
+     if (demo.getCity() != null) { demo.setCity(DataEncryptor.decrypt(demo.getCity()));}
+     if (demo.getPostalCode() != null) { demo.setPostalCode(DataEncryptor.decrypt(demo.getPostalCode()));}
+     if (demo.getEmployer() != null) { demo.setEmployer(DataEncryptor.decrypt(demo.getEmployer()));}
+     if (demo.getSchoolName() != null) { demo.setSchoolName(DataEncryptor.decrypt(demo.getSchoolName()));}
+     patient.setCred(cred);
+     patient.setDemo(demo);
+     patient.setEncrypted(false);
+   }
 
 }

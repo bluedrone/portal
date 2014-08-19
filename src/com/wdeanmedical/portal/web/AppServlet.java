@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wdeanmedical.portal.dto.AppointmentDTO;
 import com.wdeanmedical.portal.core.Core;
+import com.wdeanmedical.portal.core.Permissions;
 import com.wdeanmedical.portal.dto.AuthorizedDTO;
 import com.wdeanmedical.portal.dto.ContactMessageDTO;
 import com.wdeanmedical.portal.dto.LetterDTO;
@@ -48,6 +49,7 @@ import com.wdeanmedical.portal.entity.PatientMessage;
 import com.wdeanmedical.portal.entity.PatientMessageType;
 import com.wdeanmedical.portal.entity.VitalSigns;
 import com.wdeanmedical.portal.service.AppService;
+import com.wdeanmedical.portal.util.DataEncryptor;
 import com.wdeanmedical.portal.util.PatientSessionData;
 import com.google.gson.Gson;
 
@@ -65,6 +67,7 @@ public class AppServlet extends HttpServlet  {
     super.init(config);
     ServletContext context = getServletContext();
     Core.servletContext = context;
+    try { DataEncryptor.setEncryptionKey(context.getInitParameter("encryptionKey")); } catch (Exception e1) { e1.printStackTrace();}
     Core.timeZone = context.getInitParameter("timeZone");
     Core.sendMail = new Boolean(context.getInitParameter("mail.send"));
     Core.mailFrom = context.getInitParameter("mail.from");
@@ -78,13 +81,8 @@ public class AppServlet extends HttpServlet  {
     Core.filesHome = context.getInitParameter("filesHome");
     Core.patientDirPath = context.getInitParameter("patientDirPath");
     Core.imagesDir = context.getInitParameter("imagesDir");
-    Core.buildPatientPermissionsMap();
-    try{
-      appService = new AppService();
-    }
-    catch(MalformedURLException e){
-      e.printStackTrace();
-    }
+    Permissions.buildPatientPermissionsMap();
+    try{ appService = new AppService(); } catch(MalformedURLException e){ e.printStackTrace(); }
   }
     
   public void doPost( HttpServletRequest request, HttpServletResponse response) {

@@ -17,19 +17,22 @@ import javax.persistence.TemporalType;
 public class PatientMedicalTest extends BaseEntity implements Serializable {
 
   private static final long serialVersionUID = -1122130358806883720L;
-  private Patient patient;
+  private Integer patientId;
+  private Integer clinicianId;
   private MedicalTest medicalTest;
   private MedicalTestStatus status;
   private Date date;
-  private Clinician clinician;
 
   public PatientMedicalTest() {
   }
 
-  @JoinColumn(name = "patient", referencedColumnName = "id")
-  @ManyToOne(optional = false)
-  public Patient getPatient() { return patient; }
-  public void setPatient(Patient patient) { this.patient = patient; }
+  @Column(name = "patient_id")
+  public Integer getPatientId() { return patientId; }
+  public void setPatientId(Integer patientId) { this.patientId = patientId; }
+
+  @Column(name = "clinician_id")
+  public Integer getClinicianId() { return clinicianId; }
+  public void setClinicianId(Integer clinicianId) { this.clinicianId = clinicianId; }
   
   @JoinColumn(name = "medical_test", referencedColumnName = "id")
   @ManyToOne(optional = false)
@@ -44,10 +47,5 @@ public class PatientMedicalTest extends BaseEntity implements Serializable {
   @ManyToOne(optional = false)
   public MedicalTestStatus getStatus() { return status; }
   public void setStatus(MedicalTestStatus status) { this.status = status; }
-
-  @JoinColumn(name = "clinician", referencedColumnName = "id")
-  @ManyToOne(optional = false)
-  public Clinician getClinician() { return clinician; }
-  public void setClinician(Clinician clinician) { this.clinician = clinician; }
 
 }

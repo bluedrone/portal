@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 public class PatientHealthIssue extends BaseEntity implements Serializable {
 
   private static final long serialVersionUID = 2004851625871696041L;
-  private Patient patient;
+  private Integer patientId;
   private HealthIssue healthIssue;
   private Date date;
 
@@ -25,34 +25,17 @@ public class PatientHealthIssue extends BaseEntity implements Serializable {
   }
 
 
-
-  @JoinColumn(name = "patient", referencedColumnName = "id")
-  @ManyToOne(optional = false)
-  public Patient getPatient() {
-    return patient;
-  }
-  public void setPatient(Patient patient) {
-    this.patient = patient;
-  }
+  @Column(name = "patient_id")
+  public Integer getPatientId() { return patientId; }
+  public void setPatientId(Integer patientId) { this.patientId = patientId; }
   
   @JoinColumn(name = "health_issue", referencedColumnName = "id")
   @ManyToOne(optional = false)
-  public  HealthIssue getHealthIssue() {
-    return healthIssue;
-  }
-  public void setHealthIssue(HealthIssue healthIssue) {
-    this.healthIssue = healthIssue;
-  }
+  public  HealthIssue getHealthIssue() { return healthIssue; }
+  public void setHealthIssue(HealthIssue healthIssue) { this.healthIssue = healthIssue; }
 
   @Column(name = "date")
-  public Date getDate() {
-    return date;
-  }
-  public void setDate(Date date) {
-    this.date = date;
-  }
+  public Date getDate() { return date; }
+  public void setDate(Date date) { this.date = date; }
   
-  
- 
-
 }

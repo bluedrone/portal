@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 public class PatientImmunization extends BaseEntity implements Serializable {
 
   private static final long serialVersionUID = -210450026605157765L;
-  private Patient patient;
+  private Integer patientId;
   private Immunization immunization;
   private Date date;
 
@@ -25,34 +25,17 @@ public class PatientImmunization extends BaseEntity implements Serializable {
   }
 
 
-
-  @JoinColumn(name = "patient", referencedColumnName = "id")
-  @ManyToOne(optional = false)
-  public Patient getPatient() {
-    return patient;
-  }
-  public void setPatient(Patient patient) {
-    this.patient = patient;
-  }
+  @Column(name = "patient_id")
+  public Integer getPatientId() { return patientId; }
+  public void setPatientId(Integer patientId) { this.patientId = patientId; }
   
   @JoinColumn(name = "immunization", referencedColumnName = "id")
   @ManyToOne(optional = false)
-  public Immunization getImmunization() {
-    return immunization;
-  }
-  public void setImmunization(Immunization immunization) {
-    this.immunization = immunization;
-  }
+  public Immunization getImmunization() { return immunization; }
+  public void setImmunization(Immunization immunization) { this.immunization = immunization; }
 
   @Column(name = "date")
-  public Date getDate() {
-    return date;
-  }
-  public void setDate(Date date) {
-    this.date = date;
-  }
+  public Date getDate() { return date; }
+  public void setDate(Date date) { this.date = date; }
   
-  
- 
-
 }

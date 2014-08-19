@@ -1,8 +1,9 @@
 # WDean Medical Patient and Family Portal
-# version 0.9.16  06-AUG-2014
+# version 0.9.17  18-AUG-2014
 
 Improvements:
-isValidSession() now accounts for the servlet name as well.
+Implemented Data Encryption for Patient PHI
+Rewrote data output filtering
 
 Bug Fixes:
 

@@ -36,6 +36,7 @@ public class Patient extends BaseEntity implements Serializable {
   private PFSH pfsh;
   private MedicalHistory hist;
   private Integer currentEncounterId;
+  private Boolean encrypted = true;
 
   public Patient() {
   }
@@ -63,5 +64,9 @@ public class Patient extends BaseEntity implements Serializable {
   @Column(name = "current_encounter_id")
   public Integer getCurrentEncounterId() { return currentEncounterId; }
   public void setCurrentEncounterId(Integer currentEncounterId) { this.currentEncounterId = currentEncounterId; }
+  
+  @Transient
+  public Boolean isEncrypted() { return encrypted; }
+  public void setEncrypted(Boolean encrypted) { this.encrypted = encrypted; }
   
 }

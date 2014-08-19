@@ -17,30 +17,19 @@ import javax.persistence.TemporalType;
 public class PatientHealthTrendReport extends BaseEntity implements Serializable {
 
   private static final long serialVersionUID = 6364564784378683322L;
-  private Patient patient;
+  private Integer patientId;
   private HealthTrendReport healthTrendReport;
 
   public PatientHealthTrendReport() {
   }
 
-
-
-  @JoinColumn(name = "patient", referencedColumnName = "id")
-  @ManyToOne(optional = false)
-  public Patient getPatient() {
-    return patient;
-  }
-  public void setPatient(Patient patient) {
-    this.patient = patient;
-  }
+  @Column(name = "patient_id")
+  public Integer getPatientId() { return patientId; }
+  public void setPatientId(Integer patientId) { this.patientId = patientId; }
   
   @JoinColumn(name = "health_trend_report", referencedColumnName = "id")
   @ManyToOne(optional = false)
-  public  HealthTrendReport getHealthTrendReport() {
-    return healthTrendReport;
-  }
-  public void setHealthTrendReport(HealthTrendReport healthTrendReport) {
-    this.healthTrendReport = healthTrendReport;
-  }
+  public  HealthTrendReport getHealthTrendReport() { return healthTrendReport; }
+  public void setHealthTrendReport(HealthTrendReport healthTrendReport) { this.healthTrendReport = healthTrendReport; }
 
 }

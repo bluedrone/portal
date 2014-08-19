@@ -20,8 +20,8 @@ public class PatientLipids extends BaseEntity implements Serializable {
   private static final long serialVersionUID = -2002635222227901060L;
   
   private Date date;
-  private Patient patient;
-  private Clinician clinician;
+  private Integer patientId;
+  private Integer clinicianId;
   private int chol;
   private int hdl;
   private int ldl;
@@ -35,15 +35,13 @@ public class PatientLipids extends BaseEntity implements Serializable {
   public Date getDate() { return date; }
   public void setDate(Date date) { this.date = date; }
   
-  @JoinColumn(name = "patient", referencedColumnName = "id")
-  @ManyToOne(optional = false)
-  public Patient getPatient() { return patient; }
-  public void setPatient(Patient patient) { this.patient = patient; }
+  @Column(name = "patient_id")
+  public Integer getPatientId() { return patientId; }
+  public void setPatientId(Integer patientId) { this.patientId = patientId; }
 
-  @JoinColumn(name = "clinician", referencedColumnName = "id")
-  @ManyToOne(optional = false)
-  public Clinician getClinician() { return clinician; }
-  public void setClinician(Clinician clinician) { this.clinician = clinician; }
+  @Column(name = "clinician_id")
+  public Integer getClinicianId() { return clinicianId; }
+  public void setClinicianId(Integer clinicianId) { this.clinicianId = clinicianId; }
 
   @Column(name = "chol")
   public int getChol() { return chol; }
