@@ -86,8 +86,16 @@ $(document).ready(function() {
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
     fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     
+    window.onbeforeunload = confirmBeforeUnload;
   }
 });
+
+
+function confirmBeforeUnload() {
+  if (patient && patient != null) {
+    return "Please log out first in order to save your data."; 
+  }
+}
 
 /***********      @JQUERY INIT    *******************/
 $('#app-signin-submit').click(function(){ login(DEMO_MODE_OFF); });
