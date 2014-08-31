@@ -7,10 +7,10 @@
 
 var DO_SCROLL = true;
 var DONT_SCROLL = false;
-var DO_AUTO_LOGOUT = true;
+var MANUAL_LOGOUT = false;
+var AUTO_LOGOUT = true;
 var DEMO_MODE_ON = true;
 var DEMO_MODE_OFF = false;
-var DO_AUTO_SERVER_LOGOUT = true;
 var INITIALIZED = false;
 var DEMO_USERNAME = 'patient01@pleasantvillemedical.com';
 var DEMO_PASSWORD = 'Njs2101$';
@@ -55,7 +55,7 @@ var pastAppointments;
 var upcomingAppointments;
 var patientClinicians;
 var app_currentCalendarView = 'month';
-var patient = new Patient();
+var patient;
 var app_idleInterval;
 var app_idleTime = 0;
 var app_autoLogoutWarningDisplayed;
@@ -104,7 +104,7 @@ function app_runIdleTimer() {
 
 
 function app_timerReset() {
-  if (app_parkWarningDisplayed) { 
+  if (app_autoLogoutWarningDisplayed) { 
     $('#wdm-notification-text').html('');
     app_autoLogoutWarningDisplayed = false;
   }
@@ -120,16 +120,9 @@ function app_timerIncrement() {
     app_autoLogoutWarningDisplayed = true;
   }
   else if (app_idleTime == 15) {
-    logout();
-    setTimeout(app_displayAutologoutMessage, 3000);
+    logout(AUTO_LOGOUT);
   }
 }
-
-
-function app_displayAutologoutMessage() {
-  displayNofification('You have been automatically logged out due to inactivity', true);
-}
-
 
 
 function confirmBeforeUnload() {
@@ -147,7 +140,7 @@ $('#app-messages-panel-btn').click(function(){messagesScreen()});
 $('#app-appointments-panel-btn').click(function(){appointmentsScreen()});
 $('#app-send-message-panel-btn').click(function(){sendMessageScreen()});
 $('#app-settings-panel-btn').click(function(){settingsScreen()});
-$('#app-logout-submit').click(function(e){e.preventDefault();logout();});
+$('#app-logout-submit').click(function(e){e.preventDefault();logout(MANUAL_LOGOUT);});
 
 
 function newUserScreen() {
@@ -219,7 +212,7 @@ function newUserScreen() {
       $('#modal-confirm').modal('show'); 
       $('#app-modal-confirmation-btn').click(function(){  
         $('#modal-confirm').modal('hide'); 
-        logout();
+        logout(MANUAL_LOGOUT);
       });
     });
   });
@@ -264,6 +257,7 @@ function validateViaActivation(activationCode) {
     $.post("app/validateViaActivation", {data:jsonData}, function(data) {
     var parsedData = $.parseJSON(data);
     if (parsedData.id) {
+      patient = new Patient();
       patient = parsedData;
       patientFullName = util_buildFullName(patient.cred.firstName, patient.cred.middleName, patient.cred.lastName);
       $('.app-patient-appt-name').text(patientFullName + " [" + patient.cred.mrn + "]");
@@ -272,6 +266,7 @@ function validateViaActivation(activationCode) {
       var notificationText = patientFullName + ' ready for activation.';
       buildFormControls();
       newUserScreen();  
+      app_runIdleTimer(); 
     }
     else {
       var notificationText = 'Activation code failed.';
@@ -286,6 +281,7 @@ function validateFromOffice(sessionId) {
   $.post("app/validateFromOffice", {data:jsonData}, function(data) {
     var parsedData = $.parseJSON(data);
     if (parsedData.id) {
+      patient = new Patient();
       patient = parsedData;
       patientFullName = util_buildFullName(patient.cred.firstName, patient.cred.middleName, patient.cred.lastName);
       $('.app-patient-appt-name').text(patientFullName + " [" + patient.cred.mrn + "]");
@@ -295,6 +291,7 @@ function validateFromOffice(sessionId) {
       buildFormControls();
       app_viewStack('dashboard-screen', DO_SCROLL);
       displayNotification(notificationText);
+        app_runIdleTimer(); 
     }
     else {
       var notificationText = 'Login from practice website failed.';
@@ -321,6 +318,7 @@ function doLogin(demoMode) {
   var jsonData = JSON.stringify({ username: username, password: password});
   $.post("app/login", {data:jsonData},
     function(data) {
+      patient = new Patient();
       patient = $.parseJSON(data);
       var notificationText = "";
         
@@ -369,15 +367,19 @@ function getPatientClinicians() {
 }
 
 
-function logout() {
+function logout(isAutoLogout) {
   app_viewStack('signin-screen', DO_SCROLL);
   var jsonData = JSON.stringify({ sessionId: patient.cred.sessionId });
   $.post("app/logout", {data:jsonData}, function(data) {
     var parsedData = $.parseJSON(data);
     patient = null;
     var notificationText = patientFullName + ' logged out.';
+    if (autoLogout) {
+      notificationText = 'You have been automatically logged out due to inactivity';
+    }
     if (app_idleInterval) {clearInterval(app_idleInterval)};
-    displayNotification(notificationText);
+    var sticky = isAutoLogout
+    displayNotification(notificationText, sticky);
   });
 }
 
