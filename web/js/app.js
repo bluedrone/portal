@@ -99,7 +99,7 @@ $(document).ready(function() {
 function app_runIdleTimer() {
   app_idleTime = 0;
   if (app_idleInterval) {clearInterval(app_idleInterval)};
-  app_idleInterval = setInterval(app_timerIncrement, ONE_SECOND);
+  app_idleInterval = setInterval(app_timerIncrement, ONE_MINUTE);
 }
 
 
@@ -115,11 +115,11 @@ function app_timerReset() {
 
 function app_timerIncrement() {
   app_idleTime++;
-  if (app_idleTime == 10) {
+  if (app_idleTime == 25) {
     displayNotification('You will soon be automatically logged out if still idle', true);
     app_autoLogoutWarningDisplayed = true;
   }
-  else if (app_idleTime == 15) {
+  else if (app_idleTime == 30) {
     logout(AUTO_LOGOUT);
   }
 }
@@ -374,11 +374,11 @@ function logout(isAutoLogout) {
     var parsedData = $.parseJSON(data);
     patient = null;
     var notificationText = patientFullName + ' logged out.';
-    if (autoLogout) {
+    if (isAutoLogout) {
       notificationText = 'You have been automatically logged out due to inactivity';
     }
     if (app_idleInterval) {clearInterval(app_idleInterval)};
-    var sticky = isAutoLogout
+    var sticky = isAutoLogout;
     displayNotification(notificationText, sticky);
   });
 }
