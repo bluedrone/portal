@@ -55,8 +55,12 @@ var pastAppointments;
 var upcomingAppointments;
 var patientClinicians;
 var app_currentCalendarView = 'month';
-
 var patient = new Patient();
+var app_idleInterval;
+var app_idleTime = 0;
+var app_autoLogoutWarningDisplayed;
+var ONE_SECOND =  1000;
+var ONE_MINUTE = 60000;
 
 
 /***********      @JQUERY INIT    *******************/
@@ -86,9 +90,46 @@ $(document).ready(function() {
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
     fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     
+    $(document).mousemove( function(){ app_timerReset(); });
     window.onbeforeunload = confirmBeforeUnload;
   }
 });
+/***********      @JQUERY INIT    *******************/
+
+function app_runIdleTimer() {
+  app_idleTime = 0;
+  if (app_idleInterval) {clearInterval(app_idleInterval)};
+  app_idleInterval = setInterval(app_timerIncrement, ONE_SECOND);
+}
+
+
+function app_timerReset() {
+  if (app_parkWarningDisplayed) { 
+    $('#wdm-notification-text').html('');
+    app_autoLogoutWarningDisplayed = false;
+  }
+  app_idleTime = 0;
+}
+
+
+
+function app_timerIncrement() {
+  app_idleTime++;
+  if (app_idleTime == 10) {
+    displayNotification('You will soon be automatically logged out if still idle', true);
+    app_autoLogoutWarningDisplayed = true;
+  }
+  else if (app_idleTime == 15) {
+    logout();
+    setTimeout(app_displayAutologoutMessage, 3000);
+  }
+}
+
+
+function app_displayAutologoutMessage() {
+  displayNofification('You have been automatically logged out due to inactivity', true);
+}
+
 
 
 function confirmBeforeUnload() {
@@ -97,7 +138,8 @@ function confirmBeforeUnload() {
   }
 }
 
-/***********      @JQUERY INIT    *******************/
+
+
 $('#app-signin-submit').click(function(){ login(DEMO_MODE_OFF); });
 $('#app-your-records-panel-btn').click(function(){yourRecordsScreen()});
 $('#app-family-records-panel-btn').click(function(){familyRecordsScreen()});
@@ -291,6 +333,7 @@ function doLogin(demoMode) {
         //$('#home_previousLoginTime').css({visibility: "visible"});
         notificationText = patientFullName + ' logged in.';
         buildFormControls();
+        app_runIdleTimer(); 
       }  
       else  {
         if (patient.cred.authStatus == PATIENT_STATUS_NOT_FOUND) {
@@ -333,13 +376,20 @@ function logout() {
     var parsedData = $.parseJSON(data);
     patient = null;
     var notificationText = patientFullName + ' logged out.';
+    if (app_idleInterval) {clearInterval(app_idleInterval)};
     displayNotification(notificationText);
   });
 }
 
-function displayNotification(text) {
+
+function displayNotification(text, sticky) {
   $('#wdm-notification-text').html(text);
-  $('#wdm-notification').fadeIn(400).delay(3000).fadeOut(400); 
+  if (sticky) {
+    $('#wdm-notification').fadeIn(400);
+  }
+  else {
+    $('#wdm-notification').fadeIn(400).delay(3000).fadeOut(400); 
+  }
 }
 
 

@@ -1,9 +1,9 @@
 # WDean Medical Patient and Family Portal
-# version 0.9.17  18-AUG-2014
+# version 0.9.18  30-AUG-2014
 
 Improvements:
-Implemented Data Encryption for Patient PHI
-Rewrote data output filtering
+Browser refresh and back button behavior covered so data is not lost.
+Automatic logout after specified timeout enabled.
 
 Bug Fixes:
 
