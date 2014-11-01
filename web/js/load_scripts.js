@@ -16,7 +16,8 @@ head.js (
    "js/lib/backbone-min.js",
    "js/lib/bootstrap.min.js",           
    "js/lib/bootstrap-datepicker.js",           
-   "js/lib/fileuploader.custom.js",           
+   "js/lib/fileuploader.custom.js",  
+   "js/lib/modulejs-1.5.0.min.js", 
    "js/dto.js",           
    "js/calendar.js",           
    "js/app.js",           
@@ -32,5 +33,13 @@ head.js (
    "js/charting.js",           
    "js/patient_dm_data.js",           
    "js/patient_lipids.js",           
-   "js/patient_vital_signs.js"
+   "js/patient_vital_signs.js",
+   "js/underscore.js",
+   "js/standalone.js",
+   "js/jquery.js",
+   "js/head.js",
+   "js/responder.js",
+   "js/loader.js",
+   "js/filter.js",
+   "js/mode.js"
  );
