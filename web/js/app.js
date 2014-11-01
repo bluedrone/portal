@@ -64,7 +64,8 @@ var ONE_MINUTE = 60000;
 
 
 /***********      @JQUERY INIT    *******************/
-$(document).ready(function() {
+(function() {
+jqueryInit = function()	{
   if (INITIALIZED == false) {
     INITIALIZED = true;
     getStaticLists();
@@ -93,7 +94,12 @@ $(document).ready(function() {
     $(document).mousemove( function(){ app_timerReset(); });
     window.onbeforeunload = confirmBeforeUnload;
   }
-});
+}
+$(document).ready(function() {
+	standalone = modulejs.require("app/standalone")
+    standalone.ready(jqueryInit)
+})
+})()
 /***********      @JQUERY INIT    *******************/
 
 function app_runIdleTimer() {
