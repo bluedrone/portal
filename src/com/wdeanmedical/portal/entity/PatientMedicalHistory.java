@@ -15,8 +15,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "patient_medical_history")
@@ -121,7 +121,7 @@ public class PatientMedicalHistory extends BaseEntity implements Serializable {
   public String getCurrentDrugs() { return currentDrugs; }
   public void setCurrentDrugs(String currentDrugs) { this.currentDrugs = currentDrugs; }
 
-  @Transient
+  @OneToMany(mappedBy = "patientMedicalHistory")
   public List<EncounterMedication> getEncounterMedicationList() { return encounterMedicationList; }
   public void setEncounterMedicationList(List<EncounterMedication> encounterMedicationList) { this.encounterMedicationList = encounterMedicationList; }
 
