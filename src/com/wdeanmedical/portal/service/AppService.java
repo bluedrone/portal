@@ -313,9 +313,9 @@ public class AppService {
       }
     }
      
-    appDAO.updateCredentials(patient.getCred(), dto.isUpdatePassword(), dto.isUpdateEmail());
-    appDAO.update(patient.getPfsh());
-    appDAO.update(patient.getHist());
+    //appDAO.updateCredentials(patient.getCred(), dto.isUpdatePassword(), dto.isUpdateEmail());
+    //appDAO.update(patient.getPfsh());
+    //appDAO.update(patient.getHist());
     Demographics demo = patient.getDemo();
     demo.setEthnicity(appDAO.findEthnicityById(demo.getEthnicity().getId()));
     demo.setMaritalStatus(appDAO.findMaritalStatusById(demo.getMaritalStatus().getId()));
@@ -323,7 +323,7 @@ public class AppService {
       demo.setUsState(appDAO.findUSStateById(demo.getUsState().getId()));
     }
     demo.setRace(appDAO.findRaceById(demo.getRace().getId()));
-    appDAO.update(patient.getDemo());
+    //appDAO.update(patient.getDemo());
     appDAO.update(patient);
     decrypt(patient);
     String patientFullName = patient.getCred().getFirstName() + " " + patient.getCred().getLastName();

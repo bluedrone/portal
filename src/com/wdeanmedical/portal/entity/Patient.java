@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
+
 
 @Entity
 @Table(name = "patient")
@@ -43,21 +45,25 @@ public class Patient extends BaseEntity implements Serializable {
   
   @JoinColumn(name = "credentials", referencedColumnName = "id")
   @ManyToOne(optional = true)
+  @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
   public Credentials getCred() { return cred; }
   public void setCred(Credentials cred) { this.cred = cred; }
 
   @JoinColumn(name = "demographics", referencedColumnName = "id")
   @ManyToOne(optional = true)
+  @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
   public Demographics getDemo() { return demo; }
   public void setDemo(Demographics demo) { this.demo = demo; }
 
   @JoinColumn(name = "pfsh", referencedColumnName = "id")
   @ManyToOne(optional = true)
+  @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
   public PFSH getPfsh() { return pfsh; }
   public void setPfsh(PFSH pfsh) { this.pfsh = pfsh; }
 
   @JoinColumn(name = "patient_medical_history", referencedColumnName = "id")
   @ManyToOne(optional = true)
+  @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
   public MedicalHistory getHist() { return hist; }
   public void setHist(MedicalHistory hist) { this.hist = hist; }
   

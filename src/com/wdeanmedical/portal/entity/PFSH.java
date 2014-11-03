@@ -36,6 +36,7 @@ public class PFSH extends BaseEntity implements Serializable {
   private Integer numChildren; 
   private Integer numSons; 
   private Integer numDaughters;
+  private Patient patient;
   
 
   public PFSH() {
@@ -124,5 +125,14 @@ public class PFSH extends BaseEntity implements Serializable {
   @Column(name = "num_daughters")
   public Integer getNumDaughters() { return numDaughters; }
   public void setNumDaughters(Integer numDaughters) { this.numDaughters = numDaughters; }
+  
+  @JoinColumn(name = "patient_id", referencedColumnName = "id", insertable = false, updatable = false)
+  public Patient getPatient() {
+	return patient;
+  }
+
+  public void setPatient(Patient patient) {
+	this.patient = patient;
+  }
 
 }

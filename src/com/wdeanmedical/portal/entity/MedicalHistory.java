@@ -35,6 +35,7 @@ public class MedicalHistory extends BaseEntity implements Serializable {
   private float etohUnitsWeek; 
   private String currentDrugs;
   private List<EncounterMedication> encounterMedicationList;
+  private Patient patient;
 
   public MedicalHistory() {
   }
@@ -110,5 +111,14 @@ public class MedicalHistory extends BaseEntity implements Serializable {
   @Transient
   public List<EncounterMedication> getEncounterMedicationList() { return encounterMedicationList; }
   public void setEncounterMedicationList(List<EncounterMedication> encounterMedicationList) { this.encounterMedicationList = encounterMedicationList; }
+  
+  @JoinColumn(name = "patient_id", referencedColumnName = "id", insertable = false, updatable = false)
+  public Patient getPatient() {
+	return patient;
+  }
+
+  public void setPatient(Patient patient) {
+	this.patient = patient;
+  }
 
 }

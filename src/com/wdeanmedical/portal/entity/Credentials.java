@@ -42,6 +42,7 @@ public class Credentials extends BaseEntity implements Serializable {
   private Date lastLoginTime;
   private String previousLoginTime;
   private String activationCode;
+  private Patient patient;
   
   public Credentials() {
   }
@@ -122,5 +123,13 @@ public class Credentials extends BaseEntity implements Serializable {
   public String getSessionId() { return sessionId; }
   public void setSessionId(String sessionId) { this.sessionId = sessionId; }
 
+  @JoinColumn(name = "patient_id", referencedColumnName = "id", insertable = false, updatable = false)
+  public Patient getPatient() {
+	return patient;
+  }
+
+  public void setPatient(Patient patient) {
+	this.patient = patient;
+  }
   
 }

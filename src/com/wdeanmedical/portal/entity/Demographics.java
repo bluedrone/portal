@@ -42,6 +42,7 @@ public class Demographics extends BaseEntity implements Serializable {
   private String schoolName;
   private Date dob;
   private String profileImagePath;
+  private Patient patient;
 
   public Demographics() {
   }
@@ -131,6 +132,15 @@ public class Demographics extends BaseEntity implements Serializable {
   @ManyToOne(optional = true)
   public MaritalStatus getMaritalStatus() { return maritalStatus; }
   public void setMaritalStatus(MaritalStatus maritalStatus) { this.maritalStatus = maritalStatus; }
+  
+  @JoinColumn(name = "patient_id", referencedColumnName = "id", insertable = false, updatable = false)
+  public Patient getPatient() {
+	return patient;
+  }
+
+  public void setPatient(Patient patient) {
+	this.patient = patient;
+  }
 
   @Override
   public int hashCode() {
