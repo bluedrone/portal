@@ -12,6 +12,7 @@ modulejs.define('loader', ["jquery"], function ($) {
 	return {
 			load: function(url) {
 				_path = path(url)
+				console.log("fetch: " + _path)
 				return $.ajax( 	
 					_path,
 					{
