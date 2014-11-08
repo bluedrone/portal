@@ -31,6 +31,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wdeanmedical.portal.core.ExcludedObjects;
 import com.wdeanmedical.portal.util.DataEncryptor;
 import com.wdeanmedical.portal.dto.AppointmentDTO;
 import com.wdeanmedical.portal.service.ActivityLogService;
@@ -353,7 +354,11 @@ public class AppService {
   public  List<PatientClinician> getPatientClinicians(PatientDTO dto) throws Exception {
     Patient patient = appDAO.findPatientById(dto.getId());
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "GetPatientClinicians");
-    return appDAO.getPatientClinicians(patient);
+    List<PatientClinician> patientClinicians = appDAO.getPatientClinicians(patient);
+    for(PatientClinician patientClinician : patientClinicians){
+    	ExcludedObjects.excludeObjects(patientClinician.getPatient());    	
+    }
+    return patientClinicians;
   }
   
   

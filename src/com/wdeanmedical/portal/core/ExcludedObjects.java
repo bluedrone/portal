@@ -10,6 +10,8 @@ package com.wdeanmedical.portal.core;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.wdeanmedical.portal.entity.Patient;
+
 
 public class ExcludedObjects {
 
@@ -20,5 +22,18 @@ public class ExcludedObjects {
   public ExcludedObjects() {
     list.put("Credentials",   new String[] {"password","salt"});
  }
+  
+  public static void excludeObjects(Object obj) {
+    if (obj == null) {
+      return;
+    }
+    String className = obj.getClass().getSimpleName();
+    
+    if ("Patient".equals(className)) {
+      Patient patient = (Patient)obj;
+      patient.setPfsh(null);
+      patient.setHist(null);
+    }
+  }
  
 }
