@@ -314,9 +314,6 @@ public class AppService {
       }
     }
      
-    //appDAO.updateCredentials(patient.getCred(), dto.isUpdatePassword(), dto.isUpdateEmail());
-    //appDAO.update(patient.getPfsh());
-    //appDAO.update(patient.getHist());
     Demographics demo = patient.getDemo();
     demo.setEthnicity(appDAO.findEthnicityById(demo.getEthnicity().getId()));
     demo.setMaritalStatus(appDAO.findMaritalStatusById(demo.getMaritalStatus().getId()));
@@ -324,7 +321,6 @@ public class AppService {
       demo.setUsState(appDAO.findUSStateById(demo.getUsState().getId()));
     }
     demo.setRace(appDAO.findRaceById(demo.getRace().getId()));
-    //appDAO.update(patient.getDemo());
     appDAO.update(patient);
     decrypt(patient);
     String patientFullName = patient.getCred().getFirstName() + " " + patient.getCred().getLastName();
@@ -366,9 +362,9 @@ public class AppService {
     Patient patient = appDAO.authenticatePatient(DataEncryptor.encrypt(loginDTO.getUsername()), loginDTO.getPassword());
     if (patient.getCred().getAuthStatus() == Patient.STATUS_AUTHORIZED) {
       startPatientSession(patient, ipAddress, appDAO);
+      decrypt(patient);
     }
     activityLogService.logLogin(patient.getId());
-    decrypt(patient);
     return patient;
   }
   
@@ -383,8 +379,8 @@ public class AppService {
       patientSession.setSessionId(newSessionId);
       appDAO.update(patientSession);
       activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "ValidateFromOffice");
+      decrypt(patient);
     }
-    decrypt(patient);
     return patient;
   }
   
@@ -394,9 +390,9 @@ public class AppService {
     Patient patient = appDAO.authenticatePatientViaActivationCode(authDTO.getActivationCode());
     if (patient.getCred().getAuthStatus() == Patient.STATUS_AUTHORIZED) {
       startPatientSession(patient, ipAddress, appDAO);
+      decrypt(patient);
     }
     activityLogService.logViewPatient(patient.getId(), null, patient.getId(), "ValidateViaActivation");
-    decrypt(patient);
     return patient;
   }
   
