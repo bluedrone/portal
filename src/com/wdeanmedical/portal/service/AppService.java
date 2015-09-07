@@ -518,6 +518,17 @@ public class AppService {
   }
   
   
+  
+  public void createPassword(PatientDTO dto) throws Exception {
+    Patient patient = appDAO.findPatientById(dto.getId());
+    String newSalt = UUID.randomUUID().toString();
+    String encodedPassword = OneWayPasswordEncoder.getInstance().encode(dto.getPassword(), newSalt);
+    patient.getCred().setPassword(encodedPassword);
+    appDAO.update(patient.getCred());
+  }
+  
+  
+  
   public  boolean doPasswordReset(PasswordResetDTO passwordResetDTO) throws Exception {
     Patient patient = appDAO.findPatientByEmail(passwordResetDTO.getEmail());
     if(patient != null) {

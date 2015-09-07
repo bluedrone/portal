@@ -385,6 +385,19 @@ public class AppServlet extends HttpServlet  {
     return (json);
   }
   
+  
+  
+  public String createPassword(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    String data = request.getParameter("data");
+    Gson gson = new Gson();
+    PatientDTO dto = gson.fromJson(data, PatientDTO.class);  
+    appService.createPassword(dto);
+    String json = gson.toJson(dto);
+    return json;
+  }
+  
+  
+  
   public String doLogout(HttpServletRequest request, HttpServletResponse response) throws Exception {
     String data = request.getParameter("data");
     Gson gson = new Gson();

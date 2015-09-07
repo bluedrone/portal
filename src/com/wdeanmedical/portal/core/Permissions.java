@@ -15,6 +15,7 @@ public class Permissions {
   public static Map<String, boolean[]> patientPermissionsMap = new TreeMap<String, boolean[]>();
   
   public static void buildPatientPermissionsMap() {
+    patientPermissionsMap.put("/app/createPassword",                   new boolean[] {true ,true});
     patientPermissionsMap.put("/app/getAppointment",                   new boolean[] {true ,true});
     patientPermissionsMap.put("/app/getAppointments",                  new boolean[] {true ,true});
     patientPermissionsMap.put("/app/getAppointmentsByPatient",         new boolean[] {true ,true});
