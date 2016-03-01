@@ -17,7 +17,7 @@ var AUTO_LOGOUT = true;
 var DEMO_MODE_ON = true;
 var DEMO_MODE_OFF = false;
 var INITIALIZED = false;
-var DEMO_USERNAME = 'patient01@pleasantvillemedical.com';
+var DEMO_USERNAME = 'patient02@pleasantvillemedical.com';
 var DEMO_PASSWORD = 'Njs2101$';
 var PASSWORD_PLACEHOLDER = 'not a password';
 var app_currentUsername = 'not a username';
@@ -60,12 +60,13 @@ var pastAppointments;
 var upcomingAppointments;
 var patientClinicians;
 var app_currentCalendarView = 'month';
-var patient;
 var app_idleInterval;
 var app_idleTime = 0;
 var app_autoLogoutWarningDisplayed;
-var ONE_SECOND =  1000;
-var ONE_MINUTE = 60000;
+var ONE_SECOND =   1000;
+var TEN_SECONDS = 10000;
+var ONE_MINUTE =  60000;
+var app_patientConnectedHealth;
 
 
 /***********      @JQUERY INIT    *******************/
@@ -342,6 +343,8 @@ function doLogin(demoMode) {
         //$('#home_previousLoginTime').css({visibility: "visible"});
         notificationText = patientFullName + ' logged in.';
         buildFormControls();
+        loadPatientConnectedHealthScreen();
+        app_connectedHealthInterval = setInterval(loadPatientConnectedHealthScreen, TEN_SECONDS);
         app_runIdleTimer(); 
       }  
       else  {
@@ -359,6 +362,8 @@ function doLogin(demoMode) {
     }
   );  
 }
+
+
 
 
 function buildFormControls() {
@@ -699,4 +704,78 @@ function setupPictureUpload() {
      $("#new-patient-photo").attr("src","images/"+app_profileImageTempPath);
    }
   }); 
+}
+
+
+function loadPatientConnectedHealthScreen() {
+  var patientId = patient.id;
+  debug('IN loadPatientConnectedHealthScreen(patientId)');
+  var jsonData = JSON.stringify({ patientId: patientId, sessionId: patient.cred.sessionId});
+  $.post("app/getIOTData", {data:jsonData}, function(data) {
+    var parsedData = $.parseJSON(data);
+    app_patientConnectedHealth = parsedData.deviceData;
+    
+    if (app_patientConnectedHealth.devicesRead == true) {
+      return;
+    }
+    
+    var columns = [
+      {title:'Date/Time', field:'date', type:'date-time'}, 
+      {title:'BP', field:'bp', type:'simple'},
+      {title:'Pulse', field:'pulse', type:'simple'},
+      {title:'Glucose', field:'glucose', type:'simple'},
+      {title:'Weightscale', field:'weightscale', type:'simple'},
+      {title:'Activity', field:'activity', type:'simple'},
+      {title:'Physician Notes', field:'phynotes', type:'simple'}
+    ];
+    RenderUtil.render('component/iot_data_table', 
+    {items:app_patientConnectedHealth, 
+    title:'Connected Health', 
+    clickable:false, 
+    columns:columns
+    },
+    function(s) { 
+      $('#connected_health_detail_table').html(s);
+   
+      var cellIndexMap = {};
+      for (i=0;i<columns.length;i++) {
+        cellIndexMap[i] = columns[i].field;
+      }
+      app_patientConnectedHealth.reverse(); 
+      app_chartMap = {};
+      for (i=0;i<app_patientConnectedHealth.length;i++) {
+        var obj = app_patientConnectedHealth[i];
+        for (var property in obj) {
+          if (obj.hasOwnProperty(property)) {
+            if (property in app_chartMap == false){
+              var values = [];
+              app_chartMap[property] = values; 
+            }
+            if (property == 'date') {
+              obj[property] = dateFormat(obj[property], 'mm/dd/yyyy');
+            }
+            app_chartMap[property].push(obj[property]);
+          }
+        }
+      }
+      var labels = app_chartMap['date'];
+      var data = app_chartMap['weight'];
+      //renderLineChart(labels, data);
+    
+      $("#patient_connected_health_detail_table th.highlightable:nth-child(2)").addClass('highlighted').siblings().removeClass('highlighted');
+      $("#patient_connected_health_detail_table td.highlightable:nth-child(2)").addClass('highlighted').siblings().removeClass('highlighted');
+    
+      $('#patient_connected_health_detail_table th.highlightable').on('click', function(e){ 
+        var cellIndex = this.cellIndex; 
+        if (cellIndex > 0) {
+          var jqCellIndex = cellIndex+1;
+          $(this).addClass('highlighted').siblings().removeClass('highlighted');
+          $("#patient_conneted_health_detail_table td.highlightable:nth-child("+jqCellIndex+")").addClass('highlighted').siblings().removeClass('highlighted');
+          var labels = app_chartMap['date'];
+          var data = app_chartMap[cellIndexMap[cellIndex]];
+          //renderLineChart(labels, data);
+        }
+      });
+    });
+  });
 }

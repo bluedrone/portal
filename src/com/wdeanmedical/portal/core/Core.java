@@ -37,5 +37,6 @@ public class Core {
   public static String appBaseDir;
   public static String patientDirPath;
   public static Map<String, PatientSessionData> patientSessionMap = Collections.synchronizedMap(new TreeMap<String, PatientSessionData>());
+  public static Boolean devicesRead = false;
   
 }

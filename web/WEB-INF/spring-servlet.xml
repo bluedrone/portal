@@ -33,7 +33,7 @@
             <value>wdm</value>
         </property>
         <property name="password">
-            <value>wdm</value>
+            <value>wdmwdm</value>
         </property>
 
         <property name="initialPoolSize">
@@ -180,9 +180,15 @@
             <value>com.wdeanmedical.portal.entity.PatientLipids</value>
             <value>com.wdeanmedical.portal.entity.PatientDMData</value>
             <value>com.wdeanmedical.portal.entity.Race</value>
-           <!--  
-           --> 
             <value>com.wdeanmedical.portal.entity.USState</value>
+            
+            <value>com.wdeanmedical.portal.entity.dell.IOTActivity</value>
+            <value>com.wdeanmedical.portal.entity.dell.BP</value>
+            <value>com.wdeanmedical.portal.entity.dell.Glucose</value>
+            <value>com.wdeanmedical.portal.entity.dell.Phynotes</value>
+            <value>com.wdeanmedical.portal.entity.dell.Pulse</value>
+            <value>com.wdeanmedical.portal.entity.dell.Weightscale</value>
+            <value>com.wdeanmedical.portal.entity.dell.DeviceData</value>
           </list>
         </property>
         <property name="hibernateProperties">

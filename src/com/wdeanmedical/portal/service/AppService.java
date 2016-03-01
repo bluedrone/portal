@@ -31,6 +31,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wdeanmedical.portal.dto.DeviceDTO;
 import com.wdeanmedical.portal.core.ExcludedObjects;
 import com.wdeanmedical.portal.util.DataEncryptor;
 import com.wdeanmedical.portal.dto.AppointmentDTO;
@@ -103,6 +104,23 @@ public class AppService {
     appDAO = (AppDAO) wac.getBean("appDAO");
     activityLogService = new ActivityLogService();
   }
+  
+  
+  
+  public void getIOTData(DeviceDTO dto) throws Exception {
+    Map<String,List> map = new HashMap<String,List>();
+    map.put("bp", appDAO.getBPs());
+    map.put("activity", appDAO.getIOTActivities());
+    map.put("glucose", appDAO.getGlucose());
+    map.put("pulse", appDAO.getPulses());
+    map.put("weightscale", appDAO.getWeightscales());
+    map.put("phynotes", appDAO.getPhynotes());
+    //dto.setDataMap(map);    
+    dto.setDeviceData(appDAO.getDeviceData());
+    dto.setDevicesRead(Core.devicesRead);
+    Core.devicesRead = true;
+  }
+  
   
   public  List<PatientAllergen> getPatientAllergens(PatientDTO dto) throws Exception {
     Patient patient = appDAO.findPatientById(dto.getId());

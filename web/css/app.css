@@ -264,3 +264,11 @@ td.highlighted { background:#FFFF66 }
   border-radius: 0px 0px 8px 8px;
 }
 
+.container-scroll-500 {
+  background-color: #f8f8f8;
+  width: 100%;
+  height: 500px;
+  overflow: auto;
+  margin-bottom: 30px;
+}
+

@@ -14,6 +14,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import com.wdeanmedical.portal.entity.dell.BP;
+import com.wdeanmedical.portal.entity.dell.DeviceData;
+import com.wdeanmedical.portal.entity.dell.Glucose;
+import com.wdeanmedical.portal.entity.dell.IOTActivity;
+import com.wdeanmedical.portal.entity.dell.Phynotes;
+import com.wdeanmedical.portal.entity.dell.Pulse;
+import com.wdeanmedical.portal.entity.dell.Weightscale;
 import com.wdeanmedical.portal.entity.Ethnicity;
 import com.wdeanmedical.portal.entity.Race;
 import com.wdeanmedical.portal.entity.MaritalStatus;
@@ -87,6 +94,62 @@ public class AppDAO extends SiteDAO {
     this.deleteEntity(item);
   }
   
+  
+    public List<BP> getBPs() throws Exception {
+    Session session = this.getSession();
+    Criteria crit = session.createCriteria(BP.class);
+    crit.addOrder(Order.desc("id"));
+    List<BP> list =  crit.list();
+    return list;
+  }
+  
+  public List<IOTActivity> getIOTActivities() throws Exception {
+    Session session = this.getSession();
+    Criteria crit = session.createCriteria(IOTActivity.class);
+    crit.addOrder(Order.desc("id"));
+    List<IOTActivity> list =  crit.list();
+    return list;
+  }
+  
+  public List<Glucose> getGlucose() throws Exception {
+    Session session = this.getSession();
+    Criteria crit = session.createCriteria(Glucose.class);
+    crit.addOrder(Order.desc("id"));
+    List<Glucose> list =  crit.list();
+    return list;
+  }
+  
+  public List<Pulse> getPulses() throws Exception {
+    Session session = this.getSession();
+    Criteria crit = session.createCriteria(Pulse.class);
+    crit.addOrder(Order.desc("id"));
+    List<Pulse> list =  crit.list();
+    return list;
+  }
+  
+  public List<Weightscale> getWeightscales() throws Exception {
+    Session session = this.getSession();
+    Criteria crit = session.createCriteria(Weightscale.class);
+    crit.addOrder(Order.desc("id"));
+    List<Weightscale> list =  crit.list();
+    return list;
+  }
+  
+  public List<Phynotes> getPhynotes() throws Exception {
+    Session session = this.getSession();
+    Criteria crit = session.createCriteria(Phynotes.class);
+    crit.addOrder(Order.desc("id"));
+    List<Phynotes> list =  crit.list();
+    return list;
+  }
+  
+  public List<DeviceData> getDeviceData() throws Exception {
+    Session session = this.getSession();
+    Criteria crit = session.createCriteria(DeviceData.class);
+    crit.addOrder(Order.desc("id"));
+    List<DeviceData> list =  crit.list();
+    return list;
+  }
   
   public List<PatientAllergen> getPatientAllergens(Patient patient) throws Exception {
     Session session = this.getSession();

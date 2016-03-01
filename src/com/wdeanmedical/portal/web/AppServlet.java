@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wdeanmedical.portal.dto.DeviceDTO;
 import com.wdeanmedical.portal.dto.AppointmentDTO;
 import com.wdeanmedical.portal.core.Core;
 import com.wdeanmedical.portal.core.Permissions;
@@ -102,6 +103,9 @@ public class AppServlet extends HttpServlet  {
       }
       else if (pathInfo.equals("/getStaticLists")) {
         returnString = getStaticLists(request, response);  
+      }
+      else if (pathInfo.equals("/getIOTData")) {
+        returnString = getIOTData(request, response);  
       }
       else { 
         if (isValidSession(request, response) == false) {
@@ -438,6 +442,16 @@ public class AppServlet extends HttpServlet  {
   
    public String getStaticLists(HttpServletRequest request, HttpServletResponse response) throws Exception {
     String json = appService.getStaticLists(); 
+    return json;
+  }
+  
+  
+  public String getIOTData(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    String data = request.getParameter("data");
+    Gson gson = new Gson();
+    DeviceDTO dto = gson.fromJson(data, DeviceDTO.class); 
+    appService.getIOTData(dto);
+    String json = gson.toJson(dto);
     return json;
   }
   
